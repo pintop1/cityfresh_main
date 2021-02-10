@@ -14,6 +14,7 @@ use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\User\Referral\ReferralController;
 use App\Http\Controllers\User\WalletController;
 use App\Http\Controllers\NotificationController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,16 @@ use App\Http\Controllers\NotificationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/migrate-my-db', function(){
+	Artisan::call('migrate:fresh', [
+	   '--force' => true
+	]);
+});
+Route::get('/seed-my-db', function(){
+	Artisan::call('db:seed', [
+	   '--force' => true
+	]);
+});
 Route::get('/', function () {
     return redirect('/dashboard');
 });
