@@ -28,12 +28,7 @@ use Illuminate\Support\Facades\Artisan;
 */
 Route::get('/migrate-my-db', function(){
 	Artisan::call('migrate:fresh', [
-	   '--force' => true
-	]);
-});
-Route::get('/seed-my-db', function(){
-	Artisan::call('db:seed', [
-	   '--force' => true
+	   '--force' => true, '--seed' => true
 	]);
 });
 Route::get('/', function () {
