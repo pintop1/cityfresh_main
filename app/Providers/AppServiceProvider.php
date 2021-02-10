@@ -25,6 +25,7 @@ use App\Observers\User\Referral\ReferreeDetailObserver;
 use App\Observers\User\UserObserver;
 use App\Observers\User\WalletObserver;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         Paginator::useBootstrap();
         Farm::observe(FarmObserver::class);
         Bank::observe(BankObserver::class);
