@@ -68,7 +68,7 @@
 							<td><a href="/users/{{ $entity->referree()->first()->id }}" target="_blank"> {{ $entity->referree()->first()->name }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td><a href="/users/{{ $entity->user->id }}" target="_blank">{{ $entity->user->name }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td>{{ $entity->user->phone }}</td>
-							<td>₦{{{{ $entity->paid_commission()->count() > 0 ? number_format($entity->paid_commission()->first()->pivot->amount,2) : 0.00 }}</td>
+							<td>₦{{ $entity->paid_commission()->count() > 0 ? number_format($entity->paid_commission()->first()->pivot->amount,2) : 0.00 }}</td>
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>{{ $entity->paid_commission()->count() > 0 ? date('d M, Y h:i A', strtotime($entity->paid_commission()->first()->pivot->created_at)) : '-' }}</td>
 						</tr>
