@@ -167,7 +167,7 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        App\Providers\RepositoryServiceProvider::class,
+        App\Providers\RepositoryProvider::class,
         /*
          * Application Service Providers...
          */
