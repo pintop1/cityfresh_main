@@ -46,6 +46,10 @@ class Transaction extends Entity
         $this->attributes['details'] = json_encode($value);
     } 
 
+    public function getDetailsAttribute($value) {
+        $this->attributes['details'] = json_decode($value);
+    } 
+
     public function data(){
         return json_decode($this->details);
     }
