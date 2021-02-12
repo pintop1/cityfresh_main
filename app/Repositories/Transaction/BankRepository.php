@@ -59,6 +59,8 @@ class BankRepository extends AbstractRepository implements BankInterface
             $data['account_name'] = $bank->data->account_name;
             if(request()->default_card)
                 $data['default_card'] = true;
+            else
+                $data['default_card'] = false;
             $user->banks()->save(new Bank(['details'=>$data]));
             return redirect()->back()->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your bank has been saved!',showConfirmButton: false,timer: 1500});});</script>");
         }else {

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\Request;
 use Livewire\Connection\ConnectionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class HttpConnectionHandler extends ConnectionHandler
 {
@@ -25,9 +26,17 @@ class HttpConnectionHandler extends ConnectionHandler
 
     public function applyPersistentMiddleware()
     {
-        $request = $this->makeRequestFromUrl(
-            Livewire::originalUrl()
-        );
+        try {
+            $request = $this->makeRequestFromUrlAndMethod(
+                Livewire::originalUrl(),
+                Livewire::originalMethod()
+            );
+        } catch (NotFoundHttpException $e) {
+            $request = $this->makeRequestFromUrlAndMethod(
+                Str::replaceFirst(Livewire::originalUrl(), request('fingerprint')['locale'].'/', ''),
+                Livewire::originalMethod()
+            );
+        }
 
         // Gather all the middleware for the original route, and filter it by
         // the ones we have designated for persistence on Livewire requests.
@@ -51,9 +60,9 @@ class HttpConnectionHandler extends ConnectionHandler
             });
     }
 
-    protected function makeRequestFromUrl($url)
+    protected function makeRequestFromUrlAndMethod($url, $method = 'GET')
     {
-        $request = Request::create($url, 'GET');
+        $request = Request::create($url, $method);
 
         if ($session = request()->getSession()) {
             $request->setLaravelSession($session);

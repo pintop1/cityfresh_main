@@ -247,7 +247,7 @@
                                             <td>{{ $bank->data()->account_name }}</td>
                                             <td>{{ $bank->data()->account_number }}</td>
                                             <td>
-                                                @if($card->data()->default_card != null && $bank->data()->default_card)
+                                                @if($bank->data()->default_card != null && $bank->data()->default_card)
                                                 <i class="fas fa-check-double text-success"></i>
                                                 @else
                                                 <i class="mdi mdi-close text-danger"></i>
