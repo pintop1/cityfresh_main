@@ -264,7 +264,7 @@
                                                             @method('DELETE')
                                                         </form>
                                                         @if(!$bank->data()->default_card)
-                                                        <li class="dropdown-item"><a href="" class="updateActionBank" data-target="#update-bank{{$card->id}}"><span>Make default</span></a></li>
+                                                        <li class="dropdown-item"><a href="" class="updateActionBank" data-target="#update-bank{{$bank->id}}"><span>Make default</span></a></li>
                                                         <form id="update-bank{{$bank->id}}" action="{{ route('banks.update', $bank->id) }}" method="POST" class="d-none">
                                                             @csrf
                                                             @method('PUT')
