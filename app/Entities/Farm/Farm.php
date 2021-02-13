@@ -35,6 +35,10 @@ class Farm extends Entity
         return $this->belongsTo(Package::class);
     }
 
+    public function getCoverImageAttribute() {
+        return 'storage/'.$this->attributes['cover_image'];
+    } 
+
     public function setSlugAttribute($value)
     {
         if (static::whereSlug($slug = str_slug($value))->exists()) {
