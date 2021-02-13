@@ -46,8 +46,9 @@
 	<div class="col-12">
 		<div class="card m-b-30">
 			<div class="card-body">
-				<h4 class="mt-0 header-title">All Investments</h4>
+				<h4 class="mt-0 header-title">All Referrals</h4>
 				<p class="sub-title">
+					List of all your referrals
 				</p>
 				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
