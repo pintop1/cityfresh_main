@@ -122,7 +122,7 @@
 					<div class="col-sm-4">
 						<div class="avatar-md profile-user-wid mb-4">
 							@if($user->profile_photo_path == null)
-							<img src="{{ Gravatar::get($user->email) }}" alt="" style="width: 120px;height:120px;object-fit: cover;" class="img-thumbnail rounded-circle">
+							<img src="{{ Storage::get('public/'.$user->profile_photo_path) }}" alt="" style="width: 120px;height:120px;object-fit: cover;" class="img-thumbnail rounded-circle">
 							@else
 							<img src="{{ $user->profile_photo_path }}" style="width: 120px;height:120px;object-fit: cover;" alt="" class="img-thumbnail rounded-circle">
 							@endif
