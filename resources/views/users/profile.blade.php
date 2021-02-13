@@ -226,7 +226,7 @@
                     </div>
                     <div class="tab-pane p-3" id="banks" role="tabpanel">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-lg-8">
                                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
