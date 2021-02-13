@@ -1,3 +1,3 @@
 <?php
-symlink('/home/cityfres/repositories/cityfresh_main/storage/app/public', '/home/cityfres/repositories/cityfresh_main/public/storage');
+symlink('/home/cityfres/repositories/cityfresh_main/storage/app/public', '/home/cityfres/repositories/cityfresh_main/public');
 ?>
