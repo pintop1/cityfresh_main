@@ -87,7 +87,7 @@
     $(function(){
         $('.onAct').on("click", function (e) {
             Swal.fire({
-              text: 'Were you referred to us by an active user?<br> Please enter the user\'s referral code below.',
+              html: 'Were you referred to us by an active user?<br> Please enter the user\'s referral code below.',
               input: 'text',
               inputAttributes: {
                 autocapitalize: 'off'
