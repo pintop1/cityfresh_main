@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', __('Sign up now'))
+
 @section('content')
 <h5 class="font-18 text-center">Register</h5>
 <form class="dform form-horizontal m-t-30" method="POST" action="{{ route('register') }}">

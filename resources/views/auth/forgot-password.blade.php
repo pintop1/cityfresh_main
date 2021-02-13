@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', __('Forgot Password'))
+
 @section('content')
 <form class="form-horizontal m-t-30" method="POST" action="{{ route('password.email') }}">
     @csrf

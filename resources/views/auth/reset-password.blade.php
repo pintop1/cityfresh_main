@@ -1,5 +1,8 @@
 @extends('layouts.auth')
 
+@section('title', __('Reset Password'))
+
+
 @section('content')
 <h5 class="font-18 text-center">Reset your password.</h5>
 <form class="form-horizontal m-t-30" method="POST" action="{{ route('password.update') }}">

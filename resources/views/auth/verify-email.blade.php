@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', __('Account verification'))
+
 @section('content')
 <h5 class="font-18 text-center">Verify your account.</h5>
 <div class="mb-4 text-sm text-gray-600">
