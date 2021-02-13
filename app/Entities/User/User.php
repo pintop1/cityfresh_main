@@ -83,7 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
     } 
 
     public function getProfilePhotoPathAttribute() {
-        return \Storage::get($this->attributes['profile_photo_path']);
+        return \Storage::get('public/'.$this->attributes['profile_photo_path']);
     } 
 
     public function referree()
