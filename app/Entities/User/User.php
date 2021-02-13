@@ -80,7 +80,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function setPasswordAttribute($value) {
         $this->attributes['password'] = Hash::make($value);
-    }
+    } 
+
+    public function getProfilePhotoPathAttribute() {
+        return $this->attributes['profile_photo_path'];
+    } 
 
     public function referree()
     {
