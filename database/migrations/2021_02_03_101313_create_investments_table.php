@@ -17,7 +17,7 @@ class CreateInvestmentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('status')->default('queued');
-            $table->longtext('settings');
+            $table->json('settings');
             $table->string('units');
             $table->string('amount');
             $table->datetime('maturity_date')->nullable();
