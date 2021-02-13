@@ -19,22 +19,22 @@ class Transaction extends Entity
 
     public function user()
     {
-	    return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function banks()
     {
-	    return $this->belongsToMany(Bank::class, 'transaction_banks');
+        return $this->belongsToMany(Bank::class, 'transaction_banks');
     }
 
     public function cards()
     {
-	    return $this->belongsToMany(Card::class, 'transaction_cards');
+        return $this->belongsToMany(Card::class, 'transaction_cards');
     }
 
     public function investments()
     {
-	    return $this->belongsToMany(Investment::class, 'investments_transactions');
+        return $this->belongsToMany(Investment::class, 'investments_transactions');
     }
 
     public function referral_payments()
@@ -50,8 +50,9 @@ class Transaction extends Entity
         $this->attributes['details'] = json_decode($value);
     } 
 
-    public function data(){
-        return json_decode($this->details);
+    public function data()
+    {
+        return json_decode($this->attributes['details']);
     }
 
     public function status() : string

@@ -25,7 +25,7 @@ class Bank extends Entity
     }
 
     public function data(){
-    	return json_decode($this->details);
+    	return json_decode($this->attributes['details']);
     }
 
     public function setDetailsAttribute($value) {

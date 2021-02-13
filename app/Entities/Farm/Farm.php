@@ -17,17 +17,17 @@ class Farm extends Entity
 
     public function user()
     {
-	    return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function investments()
     {
-	    return $this->belongsToMany(Investment::class, 'farms_investments');
+        return $this->belongsToMany(Investment::class, 'farms_investments');
     }
 
     public function id() : String
     {
-    	return 'FID'.str_pad($this->id,6,0,STR_PAD_LEFT);
+        return 'FID'.str_pad($this->id,6,0,STR_PAD_LEFT);
     }
 
     public function package()
@@ -55,7 +55,7 @@ class Farm extends Entity
 
     public function status() : string
     {
-        $status = $this->status;
+        $status = $this->attributes['status'];
         switch ($status) {
             case 'pending':
                 return '<span class="badge badge-warning">Coming Soon</span>';

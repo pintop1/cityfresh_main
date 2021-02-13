@@ -114,7 +114,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function status() : string
     {
-        $status = $this->is_active;
+        $status = $this->attributes['is_active'];
         switch ($status) {
             case true:
                 return '<span class="badge badge-success">Active</span>';

@@ -46,7 +46,7 @@ class Investment extends Entity
 
     public function status() : string
     {
-        $status = $this->status;
+        $status = $this->attributes['status'];
         switch ($status) {
             case 'queued':
                 return '<span class="badge badge-warning">Queued</span>';
@@ -78,6 +78,6 @@ class Investment extends Entity
     }
 
     public function data(){
-        return json_decode($this->settings);
+        return json_decode($this->attributes['settings']);
     }
 }
