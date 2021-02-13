@@ -124,7 +124,7 @@
 							@if($user->profile_photo_path == null)
 							<img src="{{ Gravatar::get($user->email) }}" alt="" style="width: 120px;height:120px;object-fit: cover;" class="img-thumbnail rounded-circle">
 							@else
-							<img src="{{ asset($user->profile_photo_path) }}" style="width: 120px;height:120px;object-fit: cover;" alt="" class="img-thumbnail rounded-circle">
+							<img src="{{ $user->profile_photo_path }}" style="width: 120px;height:120px;object-fit: cover;" alt="" class="img-thumbnail rounded-circle">
 							@endif
 						</div>
 						<h5 class="font-size-15 text-truncate">{{ $user->name() }}</h5>
