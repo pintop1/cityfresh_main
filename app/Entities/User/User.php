@@ -82,6 +82,10 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['password'] = Hash::make($value);
     } 
 
+    public function getProfilePhotoPathAttribute() {
+        return 'storage/'.$this->attributes['profile_photo_path'];
+    } 
+
     public function referree()
     {
         return $this->belongsToMany(User::class, 'referral_users');
