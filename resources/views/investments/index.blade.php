@@ -107,7 +107,7 @@
 								if($entity->status == 'active'){
 									$date1 = \Carbon\Carbon::parse($entity->maturity_date);
 									$date2 = \Carbon\Carbon::now();
-									echo $date1->diffInDays($date2).' days';
+									echo $date1->diffInDays($date2, false).' days';
 								}else {
 									echo 'Not active';
 								}
