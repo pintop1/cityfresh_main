@@ -43,7 +43,7 @@ class Closing extends Command
         foreach($farms as $farm){
             $date1 = Carbon::parse($farm->close_date)->subHour();
             $date2 = Carbon::now();
-            if($date1->gt($date2)){
+            if($date2->gt($date1)){
                 $investments = $farm->investments()->where('status', 'pending')->orWhere('status', 'queued')->latest()->get();
                 foreach($investments as $inv){
                     if($inv->status == 'queued'){
