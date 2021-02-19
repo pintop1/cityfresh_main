@@ -24,7 +24,7 @@
 				<div class="topbar-left">
 					<a href="/dashboard" class="logo">
 					<span class="logo-light">
-					<img src="{{ asset('cityfresh-farms-logo-small.png') }}" width="24px"> City Fresh Farms
+					<img src="{{ asset('new-cityfresh-farms-logo.png') }}" width="160px">
 					</span>
 					<span class="logo-sm">
 					<img src="{{ asset('cityfresh-farms-logo-small.png') }}" width="50px">
