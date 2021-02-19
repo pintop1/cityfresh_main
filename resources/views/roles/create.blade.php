@@ -22,7 +22,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-6">
+    <div class="col-lg-6">
         <div class="card card-bordered m-b-30">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Add new role</h4>

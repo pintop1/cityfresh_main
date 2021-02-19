@@ -71,7 +71,7 @@
     </div>
     <div class="form-group text-center m-t-20">
         <div class="col-12">
-            <button class="onAct btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Register</button>
+            <button class="onAct btn btn-success btn-block btn-lg waves-effect waves-light" type="submit">Register</button>
         </div>
     </div>
     <div class="form-group mb-0 row">

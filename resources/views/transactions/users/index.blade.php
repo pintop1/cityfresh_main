@@ -49,15 +49,16 @@
 				<h4 class="mt-0 header-title">All Transactions</h4>
 				<p class="sub-title">
 				</p>
-				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>#</th>
 							<th>Amount</th>
 							<th>Type</th>
-							<th>Status</th>
 							<th>Description</th>
 							<th>Paid from</th>
+							<th>Reference</th>
+							<th>Status</th>
 							<th>Date Performed</th>
 							<th>Date Approved/Declined</th>
 						</tr>
@@ -65,12 +66,13 @@
 					<tbody>
 						@foreach($entities as $entity)
 						<tr>
-							<td>{{ $entity->data()->reference }}</td>
+							<td>{{ $loop->iteration }}</td>
 							<td>₦{{ number_format($entity->data()->amount,2) }}</td>
 							<td>{!! $entity->type() !!}</td>
-							<td>{!! $entity->status() !!}</td>
 							<td>{{ $entity->data()->description }}</td>
 							<td>{{ $entity->data()->payment_option }}</td>
+							<td>{{ $entity->data()->reference }}</td>
+							<td>{!! $entity->status() !!}</td>
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>{{ date('d M, Y h:i A', strtotime($entity->updated_at)) }}</td>
 						</tr>

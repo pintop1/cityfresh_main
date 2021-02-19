@@ -16,7 +16,8 @@ class DashboardController extends Controller
     {
     	$user = Auth::user();
     	$data['user'] = $user;
-    	$data['transactions'] = $this->getTransactions($user, true);
+        $data['transactions'] = $this->getTransactions($user, true);
+    	$data['ptransactions'] = Transaction::where('details->status', 'pending')->sum('details->amount');
     	$data['transaction_percent'] = $this->getTransactions($user);
     	$data['investments'] = $this->getInvestments($user);
     	$data['active_investment'] = $this->getInvestments($user, true);

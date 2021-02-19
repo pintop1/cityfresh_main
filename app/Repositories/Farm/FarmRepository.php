@@ -173,17 +173,21 @@ class FarmRepository extends AbstractRepository implements FarmInterface
     {
         $entity = $this->model->find($id);
         $investments = $entity->investments;
-        foreach($investments as $invest){
-            $transactions = $invest->transactions;
-            $mandates = $invest->mandates;
-            foreach($transactions as $tran)
-                $tran->delete();
-            foreach($mandates as $man)
-                $man->delete();
-            $invest->delete();
+        if(count($investments) > 0){
+            return redirect('/farmlists')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'error',title: 'Farm has investments!',showConfirmButton: false,timer: 3000});});</script>");
+        }else {
+            foreach($investments as $invest){
+                $transactions = $invest->transactions;
+                $mandates = $invest->mandates;
+                foreach($transactions as $tran)
+                    $tran->delete();
+                foreach($mandates as $man)
+                    $man->delete();
+                $invest->delete();
+            }
+            $this->deleteSingle($entity->cover_image);
+            $entity->delete();
+            return redirect('/farmlists')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your farm has been deleted!',showConfirmButton: false,timer: 3000});});</script>");
         }
-        $this->deleteSingle($entity->cover_image);
-        $entity->delete();
-        return redirect('/farmlists')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your farm has been deleted!',showConfirmButton: false,timer: 3000});});</script>");
     }
 }

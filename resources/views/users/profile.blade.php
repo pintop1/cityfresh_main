@@ -131,17 +131,17 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">
-                        <span class="d-none d-md-block">Profile</span><span class="d-block d-md-none"><i class="mdi mdi-home-variant h5"></i></span> 
+                        <span class="d-none d-md-block">Profile</span><span class="d-block d-md-none"><i class="mdi mdi-account h5"></i></span> 
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#cards" role="tab">
-                        <span class="d-none d-md-block">Cards</span><span class="d-block d-md-none"><i class="mdi mdi-account h5"></i></span>
+                        <span class="d-none d-md-block">Cards</span><span class="d-block d-md-none"><i class="mdi mdi-credit-card-multiple h5"></i></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#banks" role="tab">
-                        <span class="d-none d-md-block">Banks</span><span class="d-block d-md-none"><i class="mdi mdi-email h5"></i></span>
+                        <span class="d-none d-md-block">Banks</span><span class="d-block d-md-none"><i class="mdi mdi-bank h5"></i></span>
                         </a>
                     </li>
                 </ul>
@@ -226,7 +226,8 @@
                     </div>
                     <div class="tab-pane p-3" id="banks" role="tabpanel">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Add Bank</button>
                                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
@@ -278,36 +279,52 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-4">
-                                <h4 class="mt-2 mb-4 header-title">Add New Bank</h4>
-                                <form action="{{ route('banks.store') }}" method="post">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label>Banks</label>
-                                        <select class="form-control" name="bank">
-                                            @foreach($banks as $bank)
-                                            <option value="{{ $bank->code }}">{{ $bank->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Account Number</label>
-                                        <input type="number" name="account_number" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="default_card">
-                                            <label class="custom-control-label font-weight-normal" for="customCheck1">Use this as default bank account.</label>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-lg" type="submit">Add Bank</button>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ route('banks.store') }}" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myModalLabel">Add New Bank Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    <div class="form-group">
+                        <label>Banks</label>
+                        <select class="form-control" name="bank">
+                            @foreach($banks as $bank)
+                            <option value="{{ $bank->code }}">{{ $bank->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Account Number</label>
+                        <input type="number" name="account_number" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="default_card">
+                            <label class="custom-control-label font-weight-normal" for="customCheck1">Use this as default bank account.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 @endsection

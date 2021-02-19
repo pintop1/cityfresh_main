@@ -58,6 +58,13 @@ Route::group(['middleware'=>['auth:sanctum', 'verified', 'is_user']], function()
 			$notification = DB::table('notifications')->where('id', $id)->first();
 			return view('notifications.show', ['id'=>$id, 'notification'=>$notification]);
 		});
+		Route::get('/notifications/myaction/viewall', function(Request $request){
+			$user = $request->user();
+			$user->unreadNotifications->map(function($n) use($request) {
+		        $n->markAsRead();
+		    });
+			return redirect()->back();
+		});
 	});
 	Route::get('/profile', [UserController::class, 'profile']);
 	Route::put('/profile/update/{id}', [UserController::class, 'update'])->name('profile.update');

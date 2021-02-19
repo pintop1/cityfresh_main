@@ -89,12 +89,12 @@
 		<div class="card">
 			<div class="card-heading p-4">
 				<div class="mini-stat-icon float-right">
-					<i class="fas fa-wallet bg-warning text-white"></i>
+					<i class="icon-graph-descending bg-warning text-white"></i>
 				</div>
 				<div>
-					<h5 class="font-16">Wallet Balance</h5>
+					<h5 class="font-16">Pending Transactions</h5>
 				</div>
-				<h3 class="mt-4">₦{{ number_format($user->wallet->amount,2) }}</h3>
+				<h3 class="mt-4">₦{{ number_format($ptransactions,2) }}</h3>
 				<p class="text-muted mt-2 mb-0"></p>
 				<br><br>
 			</div>
@@ -102,7 +102,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-4">
+	<div class="col-xl-6">
 		<div class="card overflow-hidden m-b-30">
 			<div class="bg-soft-primary">
 				<div class="row">
@@ -149,7 +149,24 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xl-8">
+	<div class="col-xl-6">
+		<div class="card">
+			<div class="card-heading p-4">
+				<div class="mini-stat-icon float-right">
+					<i class="fas fa-wallet bg-warning text-white"></i>
+				</div>
+				<div>
+					<h5 class="font-16">Wallet Balance</h5>
+				</div>
+				<h3 class="mt-4">₦{{ number_format($user->wallet->amount,2) }}</h3>
+				<p class="text-muted mt-2 mb-0"></p>
+				<br><br>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xl-12">
 		<div class="card m-b-30">
 			<div class="card-body">
 				<h4 class="mt-0 header-title mb-4">Recent Transactions</h4>

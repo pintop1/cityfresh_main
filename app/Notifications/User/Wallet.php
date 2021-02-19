@@ -52,7 +52,7 @@ class Wallet extends Notification
 
         if($this->old_amount < $this->amount) return (new MailMessage)
             ->greeting('Dear '.ucwords($this->name).',')
-            ->line('Your wallet has been credited with <b>₦'.number_format($this->old_amount - $this->amount, 2).'</b>')
+            ->line('Your wallet has been credited with <b>₦'.number_format($this->amount-$this->old_amount, 2).'</b>')
             ->line('Your new wallet balance is <b>₦'.number_format($this->amount,2).'</b>')
             ->line('Thank you for using our application!');
     }

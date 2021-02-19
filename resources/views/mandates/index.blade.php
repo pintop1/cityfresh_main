@@ -80,7 +80,7 @@
 							<th>Amount</th>
 							<th>Investment From</th>
 							<th>Created at</th>
-							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -92,17 +92,17 @@
 							<td><a href="/investments/{{ $entity->investments()->first()->id }}" target="_blank">{{ $entity->investments()->first()->id() }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>
-								<div class="drodown">
-                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li class="dropdown-item"><a href="/mandates/{{ $entity->id }}/edit"><span> Edit Mandate </span></a></li>
-                                        <li class="dropdown-item"><a class="deleteAction" href="" data-target="#delete-mandate{{$entity->id}}"><span>Remove Mandate</span></a></li>
-                                        <form id="delete-mandate{{$entity->id}}" action="{{ route('mandates.destroy', $entity->id) }}" method="POST" class="d-none">
+                                <div class="drodown">
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block" href="/mandates/{{ $entity->id }}/edit"><span> Edit Mandate</span></a>
+										<a class="dropdown-item d-block deleteAction" href="" data-target="#delete-mandate{{$entity->id}}"><span>Remove Mandate</span></a>
+										<form id="delete-mandate{{$entity->id}}" action="{{ route('mandates.destroy', $entity->id) }}" method="POST" class="d-none">
 			                                @csrf
 			                                @method('DELETE')
 			                            </form>
-                                    </ul>
-                                </div>
+									</div>
+								</div>
 							</td>
 						</tr>
 						@endforeach

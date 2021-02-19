@@ -35,7 +35,6 @@
 <script src="{{ asset('plugins/datatables/vfs_fonts.js') }}"></script>
 <script src="{{ asset('plugins/datatables/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables/buttons.print.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
@@ -72,6 +71,9 @@
 				<h4 class="mt-0 header-title">All Packages</h4>
 				<p class="sub-title">
 					The list of all site packages displays here!
+					@can('create packages')
+					<a href="/packages/create" class="btn btn-primary float-right">Create Package</a>
+					@endcan
 				</p>
 				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
@@ -81,7 +83,7 @@
 							<th>Farms</th>
 							<th>Created by</th>
 							<th>Created at</th>
-							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -94,17 +96,17 @@
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-item"><a href="/packages/{{ $entity->slug }}"><span>View Package</span></a></li>
-										<li class="dropdown-item"><a href="/packages/{{ $entity->slug }}/edit"><span>Edit Package</span></a></li>
-										<li class="dropdown-item"><a href="/farmlists/{{ $entity->slug }}/create"><span>Add Farm</span></a></li>
-										<li class="dropdown-item"><a href="" class="deleteAction" data-target="#delete-package{{$entity->id}}"><span>Remove Package</span></a></li>
-                                        <form id="delete-package{{$entity->id}}" action="{{ route('packages.destroy', $entity->id) }}" method="POST" class="d-none">
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block" href="/packages/{{ $entity->slug }}"><span>View Package</span></a>
+										<a class="dropdown-item d-block" href="/packages/{{ $entity->slug }}/edit"><span>Edit Package</span></a>
+										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}/create"><span>Add Farm</span></a>
+										<a class="dropdown-item d-block deleteAction" href="" data-target="#delete-package{{$entity->id}}"><span>Remove Package</span></a>
+										<form id="delete-package{{$entity->id}}" action="{{ route('packages.destroy', $entity->id) }}" method="POST" class="d-none">
                                             @csrf
                                             @method('DELETE')
                                         </form>
-									</ul>
+									</div>
 								</div>
 							</td>
 						</tr>

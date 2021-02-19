@@ -73,19 +73,16 @@
 				<h4 class="mt-0 header-title">All Transactions</h4>
 				<p class="sub-title">
 				</p>
-				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Reference</th>
 							<th>User</th>
 							<th>Amount</th>
 							<th>Type</th>
 							<th>Status</th>
-							<th>Description</th>
-							<th>Paid from</th>
-							<th>Date Performed</th>
-							<th>Date Approved/Declined</th>
+							<th>Payment Gateway</th>
+							<th>Reference</th>
 							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
 						</tr>
 					</thead>
@@ -93,31 +90,27 @@
 						@foreach($entities as $entity)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
-							<td>{{ $entity->data()->reference }}</td>
 							<td><a href="/users/{{ $entity->user->id }}" target="_blank">{{ $entity->user->name() }}</a></td>
 							<td>₦{{ number_format($entity->data()->amount,2) }}</td>
 							<td>{!! $entity->type() !!}</td>
 							<td>{!! $entity->status() !!}</td>
-							<td>{{ $entity->data()->description }}</td>
 							<td>{{ $entity->data()->payment_option }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->updated_at)) }}</td>
+							<td>{{ $entity->data()->reference }}</td>
 							<td>
-								@if($entity->data()->status == 'pending' && $entity->investments()->count() < 1)
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										@if($entity->data()->type == "withdrawal")
-										<li class="dropdown-item"><a data-target='<h6>ACCOUNT NUMBER: <small>{{ $entity->banks()->first()->data()->account_number }}</small></h6><h6>ACCOUNT NAME: <small>{{ $entity->banks()->first()->data()->account_name }}</small></h6><h6>BANK: <small>{{ $entity->banks()->first()->data()->bank->name }}</small></h6><p>Please make transfer to the above bank above!' class="changeStatus" href="/transactions/{{ $entity->id }}/approve"><span>Approve Transaction</span></a></li>
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										@if($entity->data()->status == 'pending' && $entity->investments()->count() < 1)
+											@if($entity->data()->type == "withdrawal")
+											<a class="dropdown-item d-block changeStatus" data-target='<h6>ACCOUNT NUMBER: <small>{{ $entity->banks()->first()->data()->account_number }}</small></h6><h6>ACCOUNT NAME: <small>{{ $entity->banks()->first()->data()->account_name }}</small></h6><h6>BANK: <small>{{ $entity->banks()->first()->data()->bank->name }}</small></h6><p>Please make transfer to the above bank above!' href="/transactions/{{ $entity->id }}/approve"><span>Approve Transaction</span></a>
 											@else
-										<li class="dropdown-item"><a class="changeStatus" href="/transactions/{{ $entity->id }}/approve"><span>Approve Transaction</span></a></li>
+											<a class="dropdown-item d-block changeStatus" href="/transactions/{{ $entity->id }}/approve"><span>Approve Transaction</span></a>
 											@endif
-										<li class="dropdown-item"><a data-target='' class="changeStatus" href="/transactions/{{ $entity->id }}/decline"><span>Decline Transaction</span></a></li>
-									</ul>
+											<a class="dropdown-item d-block changeStatus" href="/transactions/{{ $entity->id }}/decline"><span>Decline Transaction</span></a>
+										@endif
+										<a class="dropdown-item d-block" href="/transactions/{{ $entity->id }}"><span>View Transaction</span></a>
+									</div>
 								</div>
-								@else
-								<div class="text-muted">No action required</div>
-								@endif
 							</td>
 						</tr>
 						@endforeach

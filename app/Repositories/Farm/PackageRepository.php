@@ -89,20 +89,28 @@ class PackageRepository extends AbstractRepository implements PackageInterface
     {
         $entity = $this->model->find($id);
         $farms = $entity->farms;
+        $counts = 0;
         foreach($farms as $farm){
-            $investments = $farm->investments;
-            foreach($investments as $invest){
-                $transactions = $invest->transactions;
-                $mandates = $invest->mandates;
-                foreach($transactions as $tran)
-                    $tran->delete();
-                foreach($mandates as $man)
-                    $man->delete();
-                $invest->delete();
-            }
-            $farm->delete();
+            $counts += $farm->investments()->count();
         }
-        $entity->delete();
-        return redirect('/packages')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your package has been deleted!',showConfirmButton: false,timer: 3000});});</script>");
+        if($counts > 0){
+            return redirect()->back()->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'error',title: 'Package has investments!',showConfirmButton: false,timer: 3000});});</script>");
+        }else {
+            foreach($farms as $farm){
+                $investments = $farm->investments;
+                foreach($investments as $invest){
+                    $transactions = $invest->transactions;
+                    $mandates = $invest->mandates;
+                    foreach($transactions as $tran)
+                        $tran->delete();
+                    foreach($mandates as $man)
+                        $man->delete();
+                    $invest->delete();
+                }
+                $farm->delete();
+            }
+            $entity->delete();
+            return redirect('/packages')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your package has been deleted!',showConfirmButton: false,timer: 3000});});</script>");
+        }
     }
 }

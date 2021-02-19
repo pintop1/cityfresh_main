@@ -63,7 +63,6 @@ class Maturity extends Command
                     }
                 } 
                 $inv->status = 'matured';
-                $inv->maturity_date = null;
                 $inv->save();
                 //
                 if($rollover > 0){

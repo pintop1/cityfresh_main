@@ -71,6 +71,9 @@
 			<div class="card-body">
 				<h4 class="mt-0 header-title">All Roles</h4>
 				<p class="sub-title">
+					@can('create roles')
+					<a href="/roles/create" class="btn btn-primary">Create Role</a>
+					@endcan
 				</p>
 				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
@@ -79,7 +82,7 @@
 							<th>Name</th>
 							<th>User Attached</th>
 							<th>Date Created</th>
-							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,16 +94,16 @@
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-item"><a href="/roles/{{ $entity->id }}"><span>View Role</span></a></li>
-										<li class="dropdown-item"><a href="/roles/{{ $entity->id }}/edit"><span>Edit Role</span></a></li>
-										<li class="dropdown-item"><a href="" class="deleteAction" data-target="#delete-role{{$entity->id}}"><span>Remove Role</span></a></li>
-                                        <form id="delete-role{{$entity->id}}" action="{{ route('roles.destroy', $entity->id) }}" method="POST" class="d-none">
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block" href="/roles/{{ $entity->id }}"><span>View Role</span></a>
+										<a class="dropdown-item d-block" href="/roles/{{ $entity->id }}/edit"><span>Edit Role</span></a>
+										<a class="dropdown-item d-block deleteAction" href="" data-target="#delete-role{{$entity->id}}"><span>Remove Role</span></a>
+										<form id="delete-role{{$entity->id}}" action="{{ route('roles.destroy', $entity->id) }}" method="POST" class="d-none">
                                             @csrf
                                             @method('DELETE')
                                         </form>
-									</ul>
+									</div>
 								</div>
 							</td>
 						</tr>

@@ -72,7 +72,7 @@
 				<h4 class="mt-0 header-title">All Investments</h4>
 				<p class="sub-title">
 				</p>
-				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -120,7 +120,13 @@
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>
 								@if($entity->status == 'queued')
-								<a class="btn btn-primary daction" href="/investments/{{ $entity->id }}/approve"><span> Approve investment</span></a><a class="ml-2 btn btn-danger daction" href="/investments/{{ $entity->id }}/decline"><span> Decline investment</span></a>
+								<div class="drodown">
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block daction" href="/investments/{{ $entity->id }}/approve"><span> Approve investment</span></a>
+										<a class="dropdown-item d-block daction" href="/investments/{{ $entity->id }}/decline"><span> Decline investment</span></a>
+									</div>
+								</div>
 								@else
 								<span class="text-muted">No action required</span>
 								@endif

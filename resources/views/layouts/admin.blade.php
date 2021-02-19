@@ -70,7 +70,7 @@
 						<li class="dropdown notification-list list-inline-item">
 							<div class="dropdown notification-list nav-pro-img">
 								<a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-									@if(auth()->user()->profile_photo_path != null)
+									@if(auth()->user()->profile_photo_path != 'storage/')
 									<img src="{{ asset(auth()->user()->profile_photo_path) }}" alt="user" class="rounded-circle">
 									@else
 									<img src="{{ Gravatar::get(auth()->user()->email) }}" class="rounded-circle">
@@ -123,24 +123,12 @@
 							<li class="menu-title">Farms</li>
 							@can('view packages')
 							<li>
-								<a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-package-variant"></i><span> Packages <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-								<ul class="submenu">
-									<li><a href="/packages">All Packages</a></li>
-									@can('create packages')
-									<li><a href="/packages/create">Create Package</a></li>
-									@endcan
-								</ul>
+								<a href="/packages" class="waves-effect"><i class="mdi mdi-package-variant"></i><span> Packages </span></a>
 							</li>
 							@endcan
 							@can('view farms')
 							<li>
-								<a href="javascript:void(0);" class="waves-effect"><i class="ti-direction-alt"></i><span> Farms <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-								<ul class="submenu">
-									<li><a href="/farmlists">All Farms</a></li>
-									@can('create farms')
-									<li><a href="/farmlists/create">Create Farm</a></li>
-									@endcan
-								</ul>
+								<a href="/farmlists" class="waves-effect"><i class="ti-direction-alt"></i><span> Farms </span></a>
 							</li>
 							@endcan
 							@can('view transactions')
@@ -162,24 +150,12 @@
 							<li class="menu-title">Permission</li>
 							@can('view roles')
 							<li>
-								<a href="javascript:void(0);" class="waves-effect"><i class="ti-layout-tab-v"></i><span> Roles <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-								<ul class="submenu">
-									<li><a href="/roles">All Roles</a></li>
-									@can('create roles')
-									<li><a href="/roles/create">Create Role</a></li>
-									@endcan
-								</ul>
+								<a href="/roles" class="waves-effect"><i class="ti-layout-tab-v"></i><span> Roles </span></a>
 							</li>
 							@endcan
 							@can('view admins')
 							<li>
-								<a href="javascript:void(0);" class="waves-effect"><i class="fas fa-users"></i><span> Administrators <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-								<ul class="submenu">
-									<li><a href="/administrators">All Administrators</a></li>
-									@can('create admins')
-									<li><a href="/administrators/create">Create Administrators</a></li>
-									@endcan
-								</ul>
+								<a href="/administrators" class="waves-effect"><i class="fas fa-users"></i><span> Administrators </span></a>
 							</li>
 							@endcan
 							<li class="menu-title">Configuration</li>

@@ -34,7 +34,7 @@ Route::group(['middleware'=>'is_admin'], function(){
 	Route::resource('packages', PackageController::class);
 	Route::resource('users', UserController::class);
 	Route::resource('referrals', ReferralController::class)->only(['index']);
-	Route::resource('transactions', TransactionController::class)->only(['index']);
+	Route::resource('transactions', TransactionController::class)->only(['index', 'show']);
 	Route::resource('mandates', MandateController::class)->only(['index', 'destroy', 'edit', 'update']);
 	Route::resource('investments', InvestmentController::class)->only(['index']);
 	Route::resource('settings', SettingController::class)->only(['index', 'edit', 'update']);

@@ -55,6 +55,7 @@
 								<!-- item-->
 								<h6 class="dropdown-item-text">
 									Notifications
+									<a href="/notifications/myaction/viewall" class="float-right text-primary small">Mark all as read</a>
 								</h6>
 								<div class="slimscroll notification-item-list">
 									<!-- item-->
@@ -74,7 +75,7 @@
 						<li class="dropdown notification-list list-inline-item">
 							<div class="dropdown notification-list nav-pro-img">
 								<a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-									@if(auth()->user()->profile_photo_path != null)
+									@if(auth()->user()->profile_photo_path != 'storage/')
 									<img src="{{ asset(auth()->user()->profile_photo_path) }}" alt="user" class="rounded-circle">
 									@else
 									<img src="{{ Gravatar::get(auth()->user()->email) }}" class="rounded-circle">

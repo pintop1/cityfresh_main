@@ -47,7 +47,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Duration</strong></td>
-                                    <td>{{ $entity->duration }} {{ $entity->duration_type }}</td>
+                                    <td>{{ $entity->duration }} {{ $entity->duration_type }}s</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Price Per Unit</strong></td>

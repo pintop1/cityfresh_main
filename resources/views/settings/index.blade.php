@@ -58,7 +58,7 @@
 							<th>Value</th>
 							<th>Date Created</th>
 							<th>Date Updated</th>
-							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>

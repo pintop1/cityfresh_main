@@ -71,6 +71,9 @@
 			<div class="card-body">
 				<h4 class="mt-0 header-title">All Users</h4>
 				<p class="sub-title">
+					@can('create admins')
+					<a href="/administrators/create" class="btn btn-primary">Create Administrator</a>
+					@endcan
 				</p>
 				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
@@ -95,12 +98,12 @@
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-item"><a href="/administrators/{{ $entity->id }}"><span>View Admin</span></a></li>
-										<li class="dropdown-item"><a href="/administrators/{{ $entity->id }}/edit"><span>Edit Admin</span></a></li>
-										<li class="dropdown-item"><a href="/users/{{ $entity->id }}/perm" class="permAction"><span>{{ $entity->is_active ? 'Restrict User' : 'Unrestrict User' }}</span></a></li>
-									</ul>
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block" href="/administrators/{{ $entity->id }}"><span>View Admin</span></a>
+										<a class="dropdown-item d-block" href="/administrators/{{ $entity->id }}/edit"><span>Edit Admin</span></a>
+										<a class="dropdown-item d-block permAction" href="/users/{{ $entity->id }}/perm"><span>{{ $entity->is_active ? 'Restrict User' : 'Unrestrict User' }}</span></a>
+									</div>
 								</div>
 							</td>
 						</tr>

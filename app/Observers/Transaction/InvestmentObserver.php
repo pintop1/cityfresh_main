@@ -124,7 +124,7 @@ class InvestmentObserver
                         'status'=>'success',
                     ];
                     $transaction = Transaction::create(['details'=>$data]);
-                    $referral->paid_commission()->attach($referree->id, ['amount'=>$amount, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now]);
+                    $referral->paid_commission()->attach($referree->id, ['amount'=>$amount, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]);
                     $referral->referral_payments()->attach($transaction->id);
                     $referree->transactions()->save($transaction);
                 }

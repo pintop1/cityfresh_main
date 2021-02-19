@@ -72,18 +72,16 @@
 				<h4 class="mt-0 header-title">All Users</h4>
 				<p class="sub-title">
 				</p>
-				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>#</th>
 							<th>Name</th>
-							<th>Passport</th>
 							<th>E-mail</th>
 							<th>Phone</th>
 							<th>Wallet</th>
 							<th>Status</th>
-							<th>Date Created</th>
-							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,25 +89,17 @@
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>{{ $entity->name() }}</td>
-							<td>
-								@if($entity->profile_photo_path)
-								<img src="{{ asset($entity->profile_photo_path) }}" width="30px" class="rounded rounded-circle">
-								@else
-								<img src="{{ Gravatar::get($entity->email) }}" width="30px" class="rounded rounded-circle">
-								@endif
-							</td>
 							<td>{{ $entity->email }}</td>
 							<td>{{ $entity->phone }}</td>
 							<td>₦{{ number_format($entity->wallet->amount,2) }}</td>
 							<td>{!! $entity->status() !!}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-item"><a href="/users/{{ $entity->id }}"><span>View User</span></a></li>
-										<li class="dropdown-item"><a href="/users/{{ $entity->id }}/perm" class="permAction"><span>{{ $entity->is_active ? 'Restrict User' : 'Unrestrict User' }}</span></a></li>
-									</ul>
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block" href="/users/{{ $entity->id }}"><span>View User</span></a>
+										<a class="dropdown-item d-block permAction" href="/users/{{ $entity->id }}/perm"><span>{{ $entity->is_active ? 'Restrict User' : 'Unrestrict User' }}</span></a>
+									</div>
 								</div>
 							</td>
 						</tr>

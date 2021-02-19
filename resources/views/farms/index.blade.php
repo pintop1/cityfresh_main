@@ -72,6 +72,9 @@
 				<h4 class="mt-0 header-title">All Farms</h4>
 				<p class="sub-title">
 					The list of all site farm lists displays here!
+					@can('create farms')
+					<a href="/farmlists/create" class="btn btn-primary float-right">Create Farm</a>
+					@endcan
 				</p>
 				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
@@ -83,7 +86,7 @@
 							<th>Duration</th>
 							<th>Package</th>
 							<th>Status</th>
-							<th><a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">Action </a></th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -98,18 +101,18 @@
 							<td>{!! $entity->status() !!}</td>
 							<td>
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li class="dropdown-item"><a href="/farmlists/{{ $entity->slug }}"><span>View Farm</span></a></li>
+									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}"><span>View Farm</span></a>
 										@if($entity->status == 'pending')
-										<li class="dropdown-item"><a href="/farmlists/{{ $entity->slug }}/edit"><span>Edit Farm</span></a></li>
+										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}/edit"><span>Edit Package</span></a>
 										@endif
-										<li class="dropdown-item"><a href="" class="deleteAction" data-target="#delete-farm{{$entity->id}}"><span>Remove Farm</span></a></li>
-                                        <form id="delete-farm{{$entity->id}}" action="{{ route('farmlists.destroy', $entity->id) }}" method="POST" class="d-none">
+										<a class="dropdown-item d-block deleteAction" href="" data-target="#delete-farm{{$entity->id}}"><span>Remove Farm</span></a>
+										<form id="delete-farm{{$entity->id}}" action="{{ route('farmlists.destroy', $entity->id) }}" method="POST" class="d-none">
                                             @csrf
                                             @method('DELETE')
                                         </form>
-									</ul>
+									</div>
 								</div>
 							</td>
 						</tr>

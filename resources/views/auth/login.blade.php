@@ -45,7 +45,7 @@
     </div>
     <div class="form-group text-center m-t-20">
         <div class="col-12">
-            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Log In</button>
+            <button class="btn btn-success btn-block btn-lg waves-effect waves-light" type="submit">Log In</button>
         </div>
     </div>
     <div class="form-group row m-t-30 m-b-0">

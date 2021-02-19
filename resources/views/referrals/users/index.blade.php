@@ -50,14 +50,14 @@
 				<p class="sub-title">
 					List of all your referrals
 				</p>
-				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>#</th>
 							<th>Referral Name</th>
-							<th>Referral Phone</th>
 							<th>Amount Earned</th>
-							<th>Date Added</th>
+							<th>Referral Phone</th>
+							<th>Registration Date</th>
 							<th>Date Paid</th>
 						</tr>
 					</thead>
@@ -69,8 +69,8 @@
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>{{ $user->name }}</td>
-							<td>{{ $user->phone }}</td>
 							<td>₦{{ $entity->paid_commission()->count() > 0 ? number_format($entity->paid_commission()->first()->pivot->amount,2) : 0.00 }}</td>
+							<td>{{ $user->phone }}</td>
 							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
 							<td>{{ $entity->paid_commission()->count() > 0 ? date('d M, Y h:i A', strtotime($entity->paid_commission()->first()->pivot->created_at)) : '-' }}</td>
 						</tr>
