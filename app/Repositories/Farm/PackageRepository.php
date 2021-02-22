@@ -80,7 +80,7 @@ class PackageRepository extends AbstractRepository implements PackageInterface
     public function update($entityId = 0, $attributes = [])
     {
         $entity = $this->model->find($entityId);
-        $data = request()->only(['description']);
+        $data = request()->only(['name', 'description']);
         $entity->update($data);
         return redirect('/packages/'.$entity->slug)->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your package has been updated!',showConfirmButton: false,timer: 3000});});</script>");
     }

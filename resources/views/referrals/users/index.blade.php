@@ -71,7 +71,7 @@
 							<td>{{ $user->name }}</td>
 							<td>₦{{ $entity->paid_commission()->count() > 0 ? number_format($entity->paid_commission()->first()->pivot->amount,2) : 0.00 }}</td>
 							<td>{{ $user->phone }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>{{ $entity->paid_commission()->count() > 0 ? date('d M, Y h:i A', strtotime($entity->paid_commission()->first()->pivot->created_at)) : '-' }}</td>
 						</tr>
 						@endforeach

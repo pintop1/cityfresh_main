@@ -120,11 +120,11 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Date Added</strong></td>
-                                    <td>{{ date('d M, Y h:i A', strtotime($entity->created_at))}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Date Last Updated</strong></td>
-                                    <td>{{ date('d M, Y h:i A', strtotime($entity->created_at))}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->updated_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Roles</strong></td>
@@ -202,7 +202,7 @@
 							<td>{{ $package->name }}</td>
 							<td>{{ $package->farms()->count() }}</td>
 							<td>{{ $package->user->name }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($package->created_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($package->created_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>
 								<div class="drodown">
 									<a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><i class="text-primary ti-more-alt"></i></a>

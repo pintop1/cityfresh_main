@@ -68,8 +68,8 @@
 							<td>{{ ucwords(str_replace('-', ' ', $entity->name)) }}</td>
 							<td>{{ $entity->description }}</td>
 							<td>{{ $entity->value }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->updated_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->updated_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>
 								<a class="btn btn-warning" href="/settings/{{ $entity->id }}/edit"><span> Edit Settings</span></a>
 							</td>

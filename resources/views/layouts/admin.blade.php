@@ -1,3 +1,6 @@
+@php
+App\Http\Controllers\Invokable\Invoke::init();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 	<head>

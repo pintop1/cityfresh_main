@@ -129,11 +129,11 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Date Joined</strong></td>
-                                    <td>{{ date('d M, Y h:i A', strtotime($entity->created_at))}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Date Last Updated</strong></td>
-                                    <td>{{ date('d M, Y h:i A', strtotime($entity->created_at))}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->updated_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 @can('view wallets')
                                 <tr>
@@ -252,7 +252,7 @@
                             <td>{{ $card->data()->account_name }}</td>
                             <td>{{ $card->data()->card_type }}</td>
                             <td>{{ $card->data()->last4 }}</td>
-                            <td>{{ date('d M, Y h:i A', strtotime($card->created_at)) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($card->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -289,7 +289,7 @@
                                 <i class="mdi mdi-close text-danger"></i>
                                 @endif
                             </td>
-                            <td>{{ date('d M, Y h:i A', strtotime($bank->created_at)) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($bank->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                         @endforeach
                     </tbody>
                 </table>
@@ -341,7 +341,7 @@
                                 @endphp
                             </td>
                             <td>{!! $inv->status() !!}</td>
-                            <td>{{ date('d M, Y h:i A', strtotime($inv->created_at)) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($inv->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                             <td>
                                 @if($inv->status == 'queued')
                                 <a class="btn btn-primary daction" href="/investments/{{ $inv->id }}/approve"><span> Approve investment</span></a><a class="ml-2 btn btn-danger daction" href="/investments/{{ $inv->id }}/decline"><span> Decline investment</span></a>
@@ -385,8 +385,8 @@
                             <td>{!! $trans->status() !!}</td>
                             <td>{{ $trans->data()->description }}</td>
                             <td>{{ $trans->data()->payment_option }}</td>
-                            <td>{{ date('d M, Y h:i A', strtotime($trans->created_at)) }}</td>
-                            <td>{{ date('d M, Y h:i A', strtotime($trans->updated_at)) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($trans->created_at)->addHour()->format('d M, Y h:i A') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($trans->updated_at)->addHour()->format('d M, Y h:i A') }}</td>
                             <td>
                                 @if($trans->data()->status == 'pending' && $trans->investments()->count() < 1)
                                 <div class="drodown">

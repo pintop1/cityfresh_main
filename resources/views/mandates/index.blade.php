@@ -90,7 +90,7 @@
 							<td><a href="/users/{{ $entity->user->id }}" target="_blank">{{ $entity->user->name() }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td>₦{{ number_format($entity->amount) }}</td>
 							<td><a href="/investments/{{ $entity->investments()->first()->id }}" target="_blank">{{ $entity->investments()->first()->id() }} <i class="ml-2 mdi mdi-link"></i></a></td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>
                                 <div class="drodown">
 									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>

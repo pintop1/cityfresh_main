@@ -43,7 +43,7 @@
                             <label>Package</label>
                             <select class="form-control" name="package">
                                 @foreach($packages as $package)
-                                <option value="{{ $package->id }}">{{ $package->name }}</option>
+                                <option value="{{ $package->id }}" {{ old('package') == $package ? 'selected':'' }}>{{ $package->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                             @error('name')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-group col-4">
                             <label>Start Date</label>
-                            <input class="form-control" type="datetime-local" value="{{ date('Y-m-d') }}T{{ date('H:i:s') }}" name="start_date">
+                            <input class="form-control" type="datetime-local" value="{{ date('Y-m-d') }}T{{ date('H')+1 }}:{{ date('i:s') }}" name="start_date">
                             @error('start_date')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="form-group col-4">
                             <label>Close Date</label>
-                            <input class="form-control" type="datetime-local" value="{{ date('Y-m-d') }}T{{ date('H:i:s') }}" name="close_date">
+                            <input class="form-control" type="datetime-local" value="{{ date('Y-m-d') }}T{{ date('H')+1 }}:{{ date('i:s') }}" name="close_date">
                             @error('close_date')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="form-group col-4">
                             <label>Duration</label>
-                            <input class="form-control" type="number" name="duration">
+                            <input class="form-control" type="number" name="duration" value="{{ old('duration') }}">
                             @error('duration')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -98,15 +98,15 @@
                         <div class="form-group col-4">
                             <label>Duration Type</label>
                             <select class="form-control" name="duration_type">
-                                <option>Day</option>
-                                <option>Week</option>
-                                <option>Month</option>
-                                <option>Year</option>
+                                <option {{ old('duration_type') == 'Day' ? 'selected':'' }}>Day</option>
+                                <option {{ old('duration_type') == 'Week' ? 'selected':'' }}>Week</option>
+                                <option {{ old('duration_type') == 'Month' ? 'selected':'' }}>Month</option>
+                                <option {{ old('duration_type') == 'Year' ? 'selected':'' }}>Year</option>
                             </select>
                         </div>
                         <div class="form-group col-4">
                             <label>Price Per Unit</label>
-                            <input class="form-control" type="number" name="price_per_unit" step="any">
+                            <input class="form-control" type="number" name="price_per_unit" step="any" value="{{ old('price_per_unit') }}">
                             @error('price_per_unit')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="form-group col-4">
                             <label>ROI</label>
-                            <input class="form-control" type="number" name="roi" step="any">
+                            <input class="form-control" type="number" name="roi" step="any" {{ old('roi') }}>
                             @error('roi')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-group col-4">
                             <label>Total Units</label>
-                            <input class="form-control" type="number" name="total_units">
+                            <input class="form-control" type="number" name="total_units" {{ old('total_units') }}>
                             @error('total_units')
                                 <span class="text-danger">
                                     <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="form-group col-12">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" name="allow_rollover">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2" name="allow_rollover" {{ old('allow_rollover') ? 'checked':'' }}>
                                 <label class="custom-control-label font-weight-normal" for="customCheck2">Enable Roll Over</label>
                             </div>
                         </div>

@@ -105,7 +105,7 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}"><span>View Farm</span></a>
 										@if($entity->status == 'pending')
-										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}/edit"><span>Edit Package</span></a>
+										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}/edit"><span>Edit Farm</span></a>
 										@endif
 										<a class="dropdown-item d-block deleteAction" href="" data-target="#delete-farm{{$entity->id}}"><span>Remove Farm</span></a>
 										<form id="delete-farm{{$entity->id}}" action="{{ route('farmlists.destroy', $entity->id) }}" method="POST" class="d-none">

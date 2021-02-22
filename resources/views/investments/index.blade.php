@@ -117,7 +117,7 @@
 								@endphp
 							</td>
 							<td>{!! $entity->status() !!}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>
 								@if($entity->status == 'queued')
 								<div class="drodown">

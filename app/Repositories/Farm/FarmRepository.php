@@ -146,6 +146,7 @@ class FarmRepository extends AbstractRepository implements FarmInterface
     {
         $entity = $this->model->find($entityId);
         $validator = Validator::make(request()->all(), [
+            'name' => ['required', 'string'],
             'start_date' => ['required', 'string'],
             'close_date' => ['required', 'string'],
             'duration' => ['required', 'string'],

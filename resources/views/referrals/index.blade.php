@@ -69,8 +69,8 @@
 							<td><a href="/users/{{ $entity->user->id }}" target="_blank">{{ $entity->user->name }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td>{{ $entity->user->phone }}</td>
 							<td>₦{{ $entity->paid_commission()->count() > 0 ? number_format($entity->paid_commission()->first()->pivot->amount,2) : 0.00 }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
-							<td>{{ $entity->paid_commission()->count() > 0 ? date('d M, Y h:i A', strtotime($entity->paid_commission()->first()->pivot->created_at)) : '-' }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
+							<td>{{ $entity->paid_commission()->count() > 0 ? \Carbon\carbon::parse($entity->paid_commission()->first()->created_at)->addHour()->format('d M, Y h:i A') : '-' }}</td>
 						</tr>
 						@endforeach
 					</tbody>

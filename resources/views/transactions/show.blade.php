@@ -70,11 +70,11 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Date</strong></td>
-                                    <td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Validation date</strong></td>
-                                    <td>{{ date('d M, Y h:i A', strtotime($entity->updated_ats)) }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->updated_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                             </tbody>
                         </table>

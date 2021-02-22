@@ -95,7 +95,7 @@
 							<td>{{ $entity->email }}</td>
 							<td>{{ $entity->phone }}</td>
 							<td>{!! $entity->status() !!}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>
 								<div class="drodown">
 									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>

@@ -68,7 +68,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Created At</strong></td>
-                                    <td>{{ date('d M, Y h:i A',strtotime($entity->created_at)) }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Created By</strong></td>
@@ -78,7 +78,7 @@
                         </table>
                     </div>
                     <div class="row">
-                        <div class="col-12"><a href="/farmlists/{{ $entity->slug }}/create" class="btn btn-primary btn-lg">Create Farm</a><a href="/packages/{{ $entity->slug }}/edit" class="btn btn-warning btn-lg ml-2">Edit Farm</a></div>
+                        <div class="col-12"><a href="/farmlists/{{ $entity->slug }}/create" class="btn btn-primary btn-lg">Add Farm</a><a href="/packages/{{ $entity->slug }}/edit" class="btn btn-warning btn-lg ml-2">Edit Package</a></div>
                     </div>
 				</div>
 			</div>

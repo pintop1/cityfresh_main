@@ -193,8 +193,8 @@
 								<td>{!! $entity->status() !!}</td>
 								<td>{{ $entity->data()->description }}</td>
 								<td>{{ $entity->data()->payment_option }}</td>
-								<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
-								<td>{{ date('d M, Y h:i A', strtotime($entity->updated_at)) }}</td>
+								<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
+								<td>{{ \Carbon\Carbon::parse($entity->updated_at)->addHour()->format('d M, Y h:i A') }}</td>
 							</tr>
 							@endforeach
 						</tbody>

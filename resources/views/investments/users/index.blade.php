@@ -82,7 +82,7 @@
 							<td>{{ $entity->maturity_date ? date('d M, Y h:i A', strtotime($entity->maturity_date)) : '-' }}</td>
 							<td>{!! $entity->status() !!}</td>
 							<td>{{ $entity->units }}</td>
-							<td>{{ date('d M, Y h:i A', strtotime($entity->created_at)) }}</td>
+							<td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
 							<td>
 								@if($entity->data()->rollover)
                                 <i class="mdi mdi-check text-success"></i> Enabled for {{ strtoupper($entity->data()->type) }}

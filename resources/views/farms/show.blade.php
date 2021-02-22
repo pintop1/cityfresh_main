@@ -67,7 +67,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Created At</strong></td>
-                                    <td>{{ date('d M, Y h:i A',strtotime($entity->created_at)) }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($entity->created_at)->addHour()->format('d M, Y h:i A') }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Created By</strong></td>
