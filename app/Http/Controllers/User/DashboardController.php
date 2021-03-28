@@ -17,12 +17,15 @@ class DashboardController extends Controller
     	$user = Auth::user();
     	$data['user'] = $user;
         $data['transactions'] = $this->getTransactions($user, true);
-    	$data['ptransactions'] = Transaction::where('details->status', 'pending')->sum('details->amount');
+    	$data['ptransactions'] = $user->transactions()->where('details->status', 'pending')->sum('details->amount');
     	$data['transaction_percent'] = $this->getTransactions($user);
     	$data['investments'] = $this->getInvestments($user);
     	$data['active_investment'] = $this->getInvestments($user, true);
         $data['trans'] = $user->transactions()->latest()->limit(5)->get();
         $data['ref_percent'] = $this->getPaidReferrals($user);
+        $data['bank_deposit'] = $user->transactions()->where('details->description', 'Wallet deposit')->sum('details->amount');
+        $data['paid_roi'] = $this->getROIPaid($user);
+        $data['paid_investment'] = $user->investments()->where('status', 'paid')->sum('amount');
     	return view('users.dashboard', $data);
     }
 
@@ -52,5 +55,15 @@ class DashboardController extends Controller
         $paid = $user->paid_commission()->count();
         $val = $paid > 0 ? ($paid/$all)*100 : 0;
         return $val;
+    }
+
+    private function getROIPaid($user){
+        $investments = $user->investments()->where('status', 'paid')->get();
+        $roi = 0;
+        foreach($investments as $invest){
+            $farm = $invest->farm()->first();
+            $roi += $invest->amount *($farm->roi/100);
+        }
+        return $roi;
     }
 }

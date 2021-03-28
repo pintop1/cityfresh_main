@@ -86,6 +86,12 @@
 <script>
     $(function(){
         $('.onAct').on("click", function (e) {
+          var name = $('input[name="name"]').val();
+          var email = $('input[name="email"]').val();
+          var phone = $('input[name="phone"]').val();
+          var password = $('input[name="password"]').val();
+          var password_confirmation = $('input[name="password_confirmation"]').val();
+          if(name != '' && email != '' && phone != '' && phone >= 11 && password != '' && password_confirmation != '' && password == password_confirmation){
             Swal.fire({
               html: 'Were you referred to us by an active user?<br> Please enter the user\'s referral code below.',
               input: 'text',
@@ -143,6 +149,7 @@
               
             });
             e.preventDefault();
+          }
         });
     });
 </script>

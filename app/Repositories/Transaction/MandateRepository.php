@@ -48,4 +48,17 @@ class MandateRepository extends AbstractRepository implements MandateInterface
         $mandate->delete();
         return redirect()->back()->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Mandate deleted successfully!',showConfirmButton: false,timer: 3000});});</script>");
     }
+
+    public function update($entityId = 0, $attributes = [])
+    {
+        $mandate = $this->model->find($entityId);
+        $user = $mandate->user;
+        $wallet = $user->wallet->amount - $user->mandates()->sum('amount');
+        if(request()->amount > $wallet){
+            return redirect()->back()->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'error',title: 'Insufficient funds in withdrawable wallet!',showConfirmButton: false,timer: 3000});});</script>");
+        }else {
+            $mandate->update(['amount'=>request()->amount]);
+            return redirect('/mandates')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Mandate updated successfully!',showConfirmButton: false,timer: 3000});});</script>");
+        }
+    }
 }

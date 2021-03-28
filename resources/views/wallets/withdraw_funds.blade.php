@@ -1,12 +1,12 @@
 @extends('layouts.user')
 
-@section('title', __('Add money to my wallet'))
+@section('title', __('Withdraw funds from wallet'))
 
 @section('bread')
 <div class="page-title-box">
 	<div class="row align-items-center">
 		<div class="col-sm-6">
-			<h4 class="page-title">Add Funds</h4>
+			<h4 class="page-title">Withdraw funds</h4>
 		</div>
 		<div class="col-sm-6">
 			<ol class="breadcrumb float-right">
@@ -25,7 +25,7 @@
 	<div class="col-6">
 		<div class="card card-bordered m-b-30">
 			<div class="card-body">
-				<h4 class="mt-0 header-title">Withdraw from wallet</h4>
+				<h4 class="mt-0 header-title">Withdraw funds</h4>
 				<p class="sub-title">
 				</p>
 				<p>

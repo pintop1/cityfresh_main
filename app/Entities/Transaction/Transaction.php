@@ -68,7 +68,7 @@ class Transaction extends Entity
                 break;
 
             case 'success':
-                return '<span class="badge badge-success">Success</span>';
+                return '<span class="badge badge-success">Successful</span>';
                 break;
             
             default:

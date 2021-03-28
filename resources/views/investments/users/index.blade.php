@@ -54,6 +54,7 @@
 						<tr>
 							<th>#</th>
 							<th>Farms</th>
+							<th>Invested Amount</th>
 							<th>Days remaining</th>
 							<th>Maturity Date</th>
 							<th>Status</th>
@@ -68,14 +69,17 @@
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td><a href="/farms/{{ $entity->farm()->first()->slug }}" target="_blank">{{ $entity->farm()->first()->name }} <i class="ml-2 mdi mdi-link"></i></a></td>
+							<td>₦{{ number_format($entity->amount,2) }}</td>
 							<td>
 								@php
 								if($entity->status == 'active'){
 									$date1 = \Carbon\Carbon::parse($entity->maturity_date);
 									$date2 = \Carbon\Carbon::now();
 									echo $date2->diffInDays($date1).' days';
-								}else {
+								}else if($entity->status == 'pending'){
 									echo 'Pending';
+								}else{
+									echo '0 day';
 								}
 								@endphp
 							</td>

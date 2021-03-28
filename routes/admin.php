@@ -52,4 +52,6 @@ Route::group(['middleware'=>'is_admin'], function(){
 		$notification = DB::table('notifications')->where('id', $id)->first();
 		return view('notifications.admin.show', ['id'=>$id, 'notification'=>$notification]);
 	});
+	Route::get('/profile', [AdminController::class, 'profile']);
+	Route::put('/profile/update/{id}', [AdminController::class, 'update'])->name('profile.update');
 });

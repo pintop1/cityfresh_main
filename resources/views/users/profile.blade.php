@@ -174,7 +174,7 @@
                                         <input type="text" name="address" class="form-control" value="{{ $user->address }}">
                                     </div>
                                     <div class="form-group col-12">
-                                        <button class="btn btn-primary btn-block btn-lg" type="submit">Edit profile</button>
+                                        <button class="btn btn-primary btn-block btn-lg" type="submit">Update profile</button>
                                     </div>
                                 </div>
                             </form>

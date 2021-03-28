@@ -10,9 +10,13 @@ use App\Entities\User\User;
 use App\Entities\User\Wallet;
 use App\Entities\Farm\Farm;
 use App\Entities\Transaction\Mandate;
+use Auth;
+use App\Traits\FileUploadManager;
 
 class AdminController extends Controller
 {
+    use FileUploadManager;
+
     public function __invoke()
     {
 
@@ -84,5 +88,23 @@ class AdminController extends Controller
             return $percent;
         }
         return $all;
+    }
+
+    public function profile()
+    {
+        $data['user'] = Auth::user();
+        return view('admins.profile', $data);
+    }
+
+    public function update($id){
+        $data = request()->except(['_token', '_method', 'passport']);
+        $user = User::find($id);
+        if(request()->hasFile('passport')){
+            if($user->profile_photo_path != null)
+                $this->deleteSingle($user->profile_photo_path);
+            $data['profile_photo_path'] = $this->uploadSingle(request('passport'), 'profile-photos');
+        }
+        $user->update($data);
+        return redirect()->back()->with('error_bottom', "<script>$(function(){swal({title: 'Great!',text: 'Your profile update was successful!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'})});</script>");
     }
 }

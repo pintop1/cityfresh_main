@@ -98,7 +98,7 @@ class MandateController extends Controller
      */
     public function update($id)
     {
-        return parent::update($id);
+        return $this->interface->update($id);
     }
 
     /**

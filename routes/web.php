@@ -44,7 +44,7 @@ Route::group(['middleware'=>['auth:sanctum', 'verified', 'is_user']], function()
 		Route::get('/farms/{id}/invest', [FarmController::class, 'invest']);
 		Route::resource('packages', PackageController::class)->only(['index']);
 		Route::resource('investments', InvestmentController::class)->except(['destroy', 'edit', 'update']);
-		Route::resource('transactions', TransactionController::class)->only(['index']);
+		Route::get('transactions/{status?}', [TransactionController::class, 'single']);
 		Route::resource('referrals', ReferralController::class)->only(['index']);
 		Route::get('/add-funds', [WalletController::class, 'addFunds']);
 		Route::post('/add-funds', [WalletController::class, 'addFundPost'])->name('wallet.addFunds');

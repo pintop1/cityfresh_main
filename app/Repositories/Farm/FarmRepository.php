@@ -165,7 +165,6 @@ class FarmRepository extends AbstractRepository implements FarmInterface
             $this->deleteSingle($entity->cover_image);
             $data['cover_image'] = $this->uploadSingle(request('cover_image'), 'farm_cover');
         }
-        $data['available_units'] = request()->total_units;
         $this->model->where('id', $entityId)->update($data);
         return redirect('/farmlists')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your farm has been updated!',showConfirmButton: false,timer: 3000});});</script>");
     }

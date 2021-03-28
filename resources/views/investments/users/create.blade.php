@@ -26,6 +26,8 @@
 @push('more-scripts')
 <script type="text/javascript">
     $(function(){
+        var perUnit = {{ $entity->price_per_unit }};
+        var entry = $("input[name='units']");
         $(".dfsub").click(function(e){
             e.preventDefault();
             var selected = $('select.from').children("option:selected").val();
@@ -45,7 +47,17 @@
                 $('.selecter').html('');
             }
         });
+        entry.on('input', function(){
+            var amount = $(this).val() * perUnit;
+            var displ = 'Price for selected units => ₦'+processNumber(amount);
+            $('.dataReport').html(displ);
+        });
+
     });
+
+    function processNumber(number){
+        return new Intl.NumberFormat('ja-JP').format(number);
+    }
 </script>
 @endpush
 
@@ -67,6 +79,7 @@
                         <div class="form-group col-12">
                             <label>Units to purchase</label>
                             <input type="number" name="units" class="form-control units" required>
+                            <div class="text-success dataReport"></div>
                         </div>
                         <div class="form-group col-12">
                             <label>Payment from</label>

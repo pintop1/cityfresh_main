@@ -80,6 +80,8 @@ App\Http\Controllers\Invokable\Invoke::init();
 									@endif
 								</a>
 								<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+									<a class="dropdown-item" href="/profile"><i class="mdi mdi-account-circle"></i> Profile</a>
+									<div class="dropdown-divider"></div>
 									<a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-power text-danger"></i> Logout</a>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -137,7 +139,7 @@ App\Http\Controllers\Invokable\Invoke::init();
 							@can('view transactions')
 							<li class="menu-title">Transactions</li>
 							<li>
-								<a href="/transactions" class="waves-effect"><i class="icon-graph-descending"></i> <span> Transactions </span> </a>
+								<a href="/transactions" class="waves-effect"><i class="icon-graph"></i> <span> Transactions </span> </a>
 							</li>
 							@endcan
 							@can('view investments')

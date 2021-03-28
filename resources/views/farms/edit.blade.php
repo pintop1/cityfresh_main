@@ -51,6 +51,7 @@
                                 </span>
                             @enderror
                         </div>
+                        @if($entity->status != 'opened')
                         <div class="form-group col-4">
                             <label>Start Date</label>
                             <input class="form-control" type="datetime-local" value="{{ date('Y-m-d', strtotime($entity->start_date)) }}T{{ date('H:i:s', strtotime($entity->start_date)) }}" name="start_date">
@@ -105,6 +106,7 @@
                                 </span>
                             @enderror
                         </div>
+                        @endif
                         <div class="form-group col-4">
                             <label>Total Units</label>
                             <input class="form-control" type="number" name="total_units" value="{{ $entity->total_units }}">
@@ -113,6 +115,10 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                        <div class="form-group col-4">
+                            <label>Available Units</label>
+                            <input class="form-control" type="number" name="available_units" value="{{ $entity->available_units }}" required="">
                         </div>
                         <div class="col-12">
                             <button class="btn btn-primary btn-lg" type="submit">Submit</button>

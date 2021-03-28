@@ -122,9 +122,13 @@ App\Http\Controllers\Invokable\Invoke::init();
 							</li>
 							<li class="menu-title">Wallet</li>
 							<li>
-								<a href="/transactions" class="waves-effect">
-								<i class="icon-graph-descending"></i> <span> Transactions </span>
-								</a>
+								<a href="javascript:void(0);" class="waves-effect"><i class="icon-graph"></i><span> Transactions <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+								<ul class="submenu">
+									<li><a href="/transactions">All Transactions</a></li>
+									<li><a href="/transactions/pending">Pending Transactions</a></li>
+									<li><a href="/transactions/failed">Failed Transactions</a></li>
+									<li><a href="/transactions/success">Successful Transactions</a></li>
+								</ul>
 							</li>
 							<li>
 								<a href="javascript:void(0);" class="waves-effect"><i class="fas fa-wallet"></i><span> Wallet <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>

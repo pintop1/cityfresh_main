@@ -71,7 +71,7 @@
 								<span class="badge badge-warning">Unread</span>
 								@endif
 							</td>
-							<td>{{ $entity->created_at ? date('d M, Y h:i A', strtotime($entity->maturity_date)) : '' }}</td>
+							<td>{{ $entity->created_at ? date('d M, Y h:i A', strtotime($entity->created_at)) : '' }}</td>
 							<td><a class="btn btn-primary" href="/notifications/{{ $entity->id }}"><span> View notification</span></a></td>
 						</tr>
 						@endforeach

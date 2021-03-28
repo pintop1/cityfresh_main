@@ -74,7 +74,7 @@ class Maturity extends Command
                 $dataa = [
                     'amount'=>$amount+$interest,
                     'type'=>'credit',
-                    'description'=>'Investment payments',
+                    'description'=>'Investment Payouts',
                     'payment_option'=>'Investment',
                     'reference'=>$this->randomId('transactions', 'details->reference'),
                     'status'=>'success',

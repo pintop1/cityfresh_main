@@ -104,7 +104,7 @@
 									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}"><span>View Farm</span></a>
-										@if($entity->status == 'pending')
+										@if($entity->status == 'pending' || $entity->status == 'opened')
 										<a class="dropdown-item d-block" href="/farmlists/{{ $entity->slug }}/edit"><span>Edit Farm</span></a>
 										@endif
 										<a class="dropdown-item d-block deleteAction" href="" data-target="#delete-farm{{$entity->id}}"><span>Remove Farm</span></a>

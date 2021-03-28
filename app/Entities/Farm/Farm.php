@@ -62,7 +62,7 @@ class Farm extends Entity
         $status = $this->attributes['status'];
         switch ($status) {
             case 'pending':
-                return '<span class="badge badge-warning">Coming Soon</span>';
+                return '<span class="badge badge-warning">Opening Soon</span>';
                 break;
 
             case 'opened':

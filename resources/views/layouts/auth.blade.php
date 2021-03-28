@@ -23,7 +23,7 @@ App\Http\Controllers\Invokable\Invoke::init();
     <body>
         <div class="accountbg"></div>
         <div class="home-btn d-none d-sm-block">
-            <a href="/" class="text-white"><i class="fas fa-home h2"></i></a>
+            <a href="//cityfreshfarms.ng" class="text-white"><i class="fas fa-home h2"></i></a>
         </div>
         <div class="wrapper-page">
             <div class="card card-pages shadow-none">

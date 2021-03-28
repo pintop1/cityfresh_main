@@ -49,6 +49,11 @@ class TransactionController extends Controller
         return $this->interface->index();
     }
 
+    public function single($status = 'all')
+    {
+        return $this->interface->single($status);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

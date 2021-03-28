@@ -97,10 +97,11 @@
 							<td>{{ $entity->data()->payment_option }}</td>
 							<td>{{ $entity->data()->reference }}</td>
 							<td>
+								@if($entity->data()->status == 'pending')
 								<div class="drodown">
-									<a href="#" class="dropdown-toggle btn btn-primary btn-trigger" data-toggle="dropdown">Action</a>
+									<a href="#" class="dropdown-toggle btn btn-warning btn-trigger" data-toggle="dropdown">Action</a>
 									<div class="dropdown-menu">
-										@if($entity->data()->status == 'pending' && $entity->investments()->count() < 1)
+										@if($entity->investments()->count() < 1)
 											@if($entity->data()->type == "withdrawal")
 											<a class="dropdown-item d-block changeStatus" data-target='<h6>ACCOUNT NUMBER: <small>{{ $entity->banks()->first()->data()->account_number }}</small></h6><h6>ACCOUNT NAME: <small>{{ $entity->banks()->first()->data()->account_name }}</small></h6><h6>BANK: <small>{{ $entity->banks()->first()->data()->bank->name }}</small></h6><p>Please make transfer to the above bank above!' href="/transactions/{{ $entity->id }}/approve"><span>Approve Transaction</span></a>
 											@else
@@ -111,6 +112,9 @@
 										<a class="dropdown-item d-block" href="/transactions/{{ $entity->id }}"><span>View Transaction</span></a>
 									</div>
 								</div>
+								@else
+								<a class="btn btn-primary" href="/transactions/{{ $entity->id }}"><span>View</span></a>
+								@endif
 							</td>
 						</tr>
 						@endforeach
