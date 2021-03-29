@@ -53,5 +53,5 @@ Route::group(['middleware'=>'is_admin'], function(){
 		return view('notifications.admin.show', ['id'=>$id, 'notification'=>$notification]);
 	});
 	Route::get('/profile', [AdminController::class, 'profile']);
-	Route::put('/profile/update/{id}', [AdminController::class, 'update'])->name('profile.update');
+	Route::put('/profile/update/{id}', [AdminController::class, 'update'])->name('admin.profile.update');
 });

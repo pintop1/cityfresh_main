@@ -128,7 +128,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">My Profile</h4>
                 <p class="sub-title">You have full control to change your primary details. <span class="text-primary"><em class="fas fa-info" data-toggle="tooltip" data-placement="right" title="You can always edit your primary info"></em></span></p>
-                <form action="{{ route('profile.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.profile.update', $user->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
