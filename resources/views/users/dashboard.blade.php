@@ -86,7 +86,7 @@
 		</div></a>
 	</div>
 	<div class="col-sm-6 col-xl-3">
-		<a href="/transactions"><div class="card">
+		<a href="/transactions/pending"><div class="card">
 			<div class="card-heading p-4">
 				<div class="mini-stat-icon float-right">
 					<i class="icon-graph-rising bg-warning text-white"></i>
@@ -151,9 +151,10 @@
 	</div>
 	<div class="col-xl-6">
 		<div class="row">
-			<div class="col-xl-6">
-				<a href="/withdraw-fund"><div class="card">
+			<div class="col-xl-12">
+				<div class="card">
 					<div class="card-heading p-4">
+						<a href="/withdraw-fund">
 						<div class="mini-stat-icon float-right">
 							<i class="fas fa-wallet bg-success text-white"></i>
 						</div>
@@ -162,54 +163,15 @@
 						</div>
 						<h3 class="mt-4">₦{{ number_format($user->wallet->amount,2) }}</h3>
 						<p class="text-muted mt-2 mb-0"></p>
+						</a>
 						<br><br>
+						<ul>
+							<li>Total Investment Payout: <b>₦{{ number_format($paid_investment,2) }}</b></li>
+							<li>Total ROI Received: <b>₦{{ number_format($paid_roi,2) }}</b></li>
+							<li>Total Bank Deposit: <b>₦{{ number_format($bank_deposit,2) }}</b></li>
+						</ul>
 					</div>
-				</div></a>
-			</div>
-			<div class="col-xl-6">
-				<a href="/withdraw-fund"><div class="card">
-					<div class="card-heading p-4">
-						<div class="mini-stat-icon float-right">
-							<i class="icon-diamond bg-info text-white"></i>
-						</div>
-						<div>
-							<h5 class="font-16">Total Investment Payout</h5>
-						</div>
-						<h3 class="mt-4">₦{{ number_format($paid_investment,2) }}</h3>
-						<p class="text-muted mt-2 mb-0"></p>
-						<br><br>
-					</div>
-				</div></a>
-			</div>
-			<div class="col-xl-6">
-				<a href="/withdraw-fund"><div class="card">
-					<div class="card-heading p-4">
-						<div class="mini-stat-icon float-right">
-							<i class="icon-diamond bg-warning text-white"></i>
-						</div>
-						<div>
-							<h5 class="font-16">Total ROI Received</h5>
-						</div>
-						<h3 class="mt-4">₦{{ number_format($paid_roi,2) }}</h3>
-						<p class="text-muted mt-2 mb-0"></p>
-						<br><br>
-					</div>
-				</div></a>
-			</div>
-			<div class="col-xl-6">
-				<a href="/withdraw-fund"><div class="card">
-					<div class="card-heading p-4">
-						<div class="mini-stat-icon float-right">
-							<i class="fas fa-piggy-bank bg-danger text-white"></i>
-						</div>
-						<div>
-							<h5 class="font-16">Total Bank Deposit</h5>
-						</div>
-						<h3 class="mt-4">₦{{ number_format($bank_deposit,2) }}</h3>
-						<p class="text-muted mt-2 mb-0"></p>
-						<br><br>
-					</div>
-				</div></a>
+				</div>
 			</div>
 		</div>
 	</div>

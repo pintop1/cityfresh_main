@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_complete')->default(false);
             $table->timestamps();
         });
     }

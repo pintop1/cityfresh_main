@@ -40,6 +40,26 @@ class WalletRepository extends AbstractRepository implements WalletInterface
         return Wallet::class;
     }
 
+    public function index()
+    {
+        $user = Auth::user();
+        $data['user'] = $user;
+        $data['bank_deposit'] = $user->transactions()->where('details->description', 'Wallet deposit')->where('details->status', 'success')->sum('details->amount');
+        $data['paid_roi'] = $this->getROIPaid($user);
+        $data['paid_investment'] = $user->investments()->where('status', 'paid')->sum('amount');
+        return view('wallets.index', $data);
+    }
+
+    private function getROIPaid($user){
+        $investments = $user->investments()->where('status', 'paid')->get();
+        $roi = 0;
+        foreach($investments as $invest){
+            $farm = $invest->farm()->first();
+            $roi += $invest->amount *($farm->roi/100);
+        }
+        return $roi;
+    }
+
     public function addFunds()
     {
         $data['user'] = Auth::user();
@@ -89,7 +109,7 @@ class WalletRepository extends AbstractRepository implements WalletInterface
         $dataa = [
             'amount'=>$amount,
             'type'=>$type,
-            'description'=>'Wallet deposit',
+            'description'=>$type == 'credit' ? 'Wallet deposit' : 'Wallet withdrawal',
             'payment_option'=>$from,
             'reference'=>$this->randomId('transactions', 'details->reference'),
             'status'=>$status,

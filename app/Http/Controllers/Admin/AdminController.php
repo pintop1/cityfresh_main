@@ -28,9 +28,9 @@ class AdminController extends Controller
     	$data['active_user'] = $this->getUsers(true);
     	$data['farms'] = $this->getFarm();
     	$data['open_farm'] = $this->getFarm(true);
-        $data['trans'] = Transaction::latest()->limit(20)->get();
+        $data['trans'] = Transaction::latest()->limit(10)->get();
         $data['mandates'] = Mandate::sum('amount');
-        $data['payouts'] = $this->getPayouts();
+        $data['payouts'] = Transaction::where(['details->type'=>'withdrawal', 'details->status'=>'pending'])->sum('details->amount');
         $data['payouts_percent'] = $this->getPayouts(true);
         $data['active_investments'] = Investment::where('status', 'active')->count();
         $data['wallets'] = Wallet::sum('amount');

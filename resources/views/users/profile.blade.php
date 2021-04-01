@@ -228,7 +228,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Add Bank</button>
-                                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>#</th>

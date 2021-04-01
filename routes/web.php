@@ -73,6 +73,8 @@ Route::group(['middleware'=>['auth:sanctum', 'verified', 'is_user']], function()
 	Route::get('/card/add', [CardController::class, 'addCard']);
 	Route::get('/verifyPayment', [CardController::class, 'verifyPayment'])->name('card.process');
 	Route::get('/verifyPayment/invest', [InvestmentController::class, 'verifyPayment'])->name('card.process.invest');
+
+	Route::get('/wallet', [WalletController::class, 'index']);
 });
 Route::get('/verify_referee/{ref}', [UserController::class, 'verify_referee'])->name('verify.referee');
 Route::get('/email/verify', function () {

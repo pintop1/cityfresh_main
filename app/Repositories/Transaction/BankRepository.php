@@ -62,6 +62,10 @@ class BankRepository extends AbstractRepository implements BankInterface
             else
                 $data['default_card'] = false;
             $user->banks()->save(new Bank(['details'=>$data]));
+            if($user->profile_photo_path != null && $user->dob != null && $user->address != null && !$user->is_complete){
+                $user->update(['is_complete'=>true]);
+                return redirect('/')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your account registration is complete!',showConfirmButton: false,timer: 1500});});</script>");
+            }
             return redirect()->back()->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your bank has been saved!',showConfirmButton: false,timer: 1500});});</script>");
         }else {
             return redirect()->back()->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'error',title: '".$bank->message."',showConfirmButton: false,timer: 3000});});</script>");

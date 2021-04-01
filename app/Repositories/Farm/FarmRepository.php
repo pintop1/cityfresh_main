@@ -77,6 +77,7 @@ class FarmRepository extends AbstractRepository implements FarmInterface
     public function show($id)
     {
         $user = Auth::user();
+        $data['user'] = $user;
         $data['entity'] = $this->model->where('slug', $id)->first();
         if($user->is_admin){
             return view($this->viewShow, $data);

@@ -10,6 +10,7 @@ use App\Traits\GlobalMethods;
 use App\Entities\User\Referral\ReferreeDetail;
 use App\Entities\User\Referral\Referral;
 use App\Notifications\User\Referral\ReferralDetailNotification;
+use App\Notifications\User\CompleteProfileNotification;
 
 class UserObserver
 {
@@ -40,6 +41,11 @@ class UserObserver
             $user->notify(new RegistrationNotification($user->name));
             $referreeDetail = $user->my_referral_code;
             $user->notify(new ReferralDetailNotification(explode(' ', $user->name)[0], $referreeDetail->code));
+        }
+        if($user->isDirty('is_complete')){
+            if($user->is_complete){
+                $user->notify(new CompleteProfileNotification(explode(' ', $user->name)[0]));
+            }
         }
     }
 }

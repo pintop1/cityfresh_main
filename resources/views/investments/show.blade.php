@@ -6,7 +6,7 @@
 <div class="page-title-box">
 	<div class="row align-items-center">
 		<div class="col-sm-6">
-			<h4 class="page-title">Viewing farm</h4>
+			<h4 class="page-title">Viewing investment</h4>
 		</div>
 		<div class="col-sm-6">
 			<ol class="breadcrumb float-right">
@@ -76,6 +76,16 @@
                                             echo '0 day';
                                         }
                                         @endphp
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rollover</strong></td>
+                                    <td>
+                                        @if($entity->data()->rollover)
+                                        <i class="mdi mdi-check text-success"></i> Enabled for {{ strtoupper($entity->data()->type) }}
+                                        @else
+                                        <i class="mdi mdi-close text-danger"></i> Disabled
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>

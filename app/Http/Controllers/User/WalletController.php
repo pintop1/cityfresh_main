@@ -43,7 +43,7 @@ class WalletController extends Controller
      */
     public function index()
     {
-        return parent::index();
+        return $this->interface->index();
     }
 
     /**
