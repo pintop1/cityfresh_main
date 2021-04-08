@@ -16,11 +16,12 @@ class DashboardController extends Controller
     {
     	$user = Auth::user();
     	$data['user'] = $user;
-        $data['transactions'] = $this->getTransactions($user, true);
+        $data['transactions'] = $user->transactions()->where('details->status', 'success')->sum('details->amount');
     	$data['ptransactions'] = $user->transactions()->where('details->status', 'pending')->sum('details->amount');
     	$data['transaction_percent'] = $this->getTransactions($user);
     	$data['investments'] = $this->getInvestments($user);
-    	$data['active_investment'] = $this->getInvestments($user, true);
+        $data['active_investment'] = $user->investments()->where('status', 'active')->sum('amount');
+    	$data['active_investmentp'] = $this->getInvestments($user, true);
         $data['trans'] = $user->transactions()->latest()->limit(10)->get();
         $data['ref_percent'] = $this->getPaidReferrals($user);
         $data['bank_deposit'] = $user->transactions()->where('details->description', 'Wallet deposit')->where('details->status', 'success')->sum('details->amount');

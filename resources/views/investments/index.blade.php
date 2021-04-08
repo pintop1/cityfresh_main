@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', __('All investments'))
+@section('title', __($status.' investments'))
 
 @section('bread')
 <div class="page-title-box">
@@ -12,7 +12,7 @@
 			<ol class="breadcrumb float-right">
 				<li class="breadcrumb-item"><a href="/">City Fresh Farms</a></li>
 				<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-				<li class="breadcrumb-item active">Investments</li>
+				<li class="breadcrumb-item active">{{ $status }}Investments</li>
 			</ol>
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 	<div class="col-12">
 		<div class="card m-b-30">
 			<div class="card-body">
-				<h4 class="mt-0 header-title">All Investments</h4>
+				<h4 class="mt-0 header-title">{{ $status }} Investments</h4>
 				<p class="sub-title">
 				</p>
 				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -79,6 +79,7 @@
 							<th>User</th>
 							<th>Farms</th>
 							<th>Units</th>
+							<th>Amount</th>
 							<th>Rollover</th>
 							<th>Maturity Date</th>
 							<th>Days remaining</th>
@@ -94,9 +95,10 @@
 							<td><a href="/users/{{ $entity->user->id }}" target="_blank">{{ $entity->user->name() }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td><a href="/farms/{{ $entity->farm()->first()->slug }}" target="_blank">{{ $entity->farm()->first()->name }} <i class="ml-2 mdi mdi-link"></i></a></td>
 							<td>{{ $entity->units }}</td>
+							<td>₦{{ number_format($entity->amount,2) }}</td>
 							<td>
 								@if($entity->data()->rollover)
-                                <i class="mdi mdi-check text-success"></i> Enabled for {{ strtoupper($entity->data()->type) }}
+                                <i class="mdi mdi-check text-success"></i>{{ strtoupper($entity->data()->type) }}
                                 @else
                                 <i class="mdi mdi-close text-danger"></i> Disabled
                                 @endif

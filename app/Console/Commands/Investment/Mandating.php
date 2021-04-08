@@ -60,6 +60,7 @@ class Mandating extends Command
 
     private function investNow($farm, $mandate, $setting){
         $user = $mandate->user;
+        $wallet = $user->wallet;
         $per_unit = $farm->price_per_unit;
         $remainder = $mandate->amount%$per_unit;
         $buying = (int) ($mandate->amount / $per_unit);
@@ -76,6 +77,8 @@ class Mandating extends Command
                 $mandate->investments()->detach($investment->id);
                 $mandate->delete();
             }
+            $newB = $wallet->amount - $totalBuying;
+            $wallet->update(['amount'=>$newB]);
         }
     }
 

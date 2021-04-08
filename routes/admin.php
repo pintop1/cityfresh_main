@@ -34,9 +34,12 @@ Route::group(['middleware'=>'is_admin'], function(){
 	Route::resource('packages', PackageController::class);
 	Route::resource('users', UserController::class);
 	Route::resource('referrals', ReferralController::class)->only(['index']);
-	Route::resource('transactions', TransactionController::class)->only(['index', 'show']);
+	Route::get('transactions/view/single/{id}', [TransactionController::class, 'show']);
+	Route::get('transactions/{status?}', [TransactionController::class, 'single']);
 	Route::resource('mandates', MandateController::class)->only(['index', 'destroy', 'edit', 'update']);
-	Route::resource('investments', InvestmentController::class)->only(['index']);
+	Route::get('transactions/{status?}', [TransactionController::class, 'single']);
+	//Route::resource('investments', InvestmentController::class)->only(['index']);
+	Route::get('investments/{status?}', [InvestmentController::class, 'single']);
 	Route::resource('settings', SettingController::class)->only(['index', 'edit', 'update']);
 	Route::resource('roles', RoleController::class);
 	Route::resource('administrators', TheAdminController::class);

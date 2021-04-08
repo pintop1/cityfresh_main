@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', __('All Transactions'))
+@section('title', __($status.' Transactions'))
 
 @section('bread')
 <div class="page-title-box">
@@ -12,7 +12,7 @@
 			<ol class="breadcrumb float-right">
 				<li class="breadcrumb-item"><a href="/">City Fresh Farms</a></li>
 				<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-				<li class="breadcrumb-item active">All Transactions</li>
+				<li class="breadcrumb-item active">{{$status}} Transactions</li>
 			</ol>
 		</div>
 	</div>
@@ -70,7 +70,7 @@
 	<div class="col-12">
 		<div class="card m-b-30">
 			<div class="card-body">
-				<h4 class="mt-0 header-title">All Transactions</h4>
+				<h4 class="mt-0 header-title">{{$status}} Transactions</h4>
 				<p class="sub-title">
 				</p>
 				<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -113,7 +113,7 @@
 									</div>
 								</div>
 								@else
-								<a class="btn btn-primary" href="/transactions/{{ $entity->id }}"><span>View</span></a>
+								<a class="btn btn-primary" href="/transactions/view/single/{{ $entity->id }}"><span>View</span></a>
 								@endif
 							</td>
 						</tr>

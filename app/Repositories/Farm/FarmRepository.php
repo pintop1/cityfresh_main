@@ -119,6 +119,7 @@ class FarmRepository extends AbstractRepository implements FarmInterface
         $data['cover_image'] = $this->uploadSingle(request('cover_image'), 'farm_cover');
         $data['available_units'] = request()->total_units;
         $data['package_id'] = request()->package;
+        $data['user_id'] = $user->id;
         $farm = $this->model->create($data);
         return redirect('/farmlists')->with('error_bottom', "<script>$(function(){ Swal.fire({ position: 'top-end', icon: 'success',title: 'Your farm has been saved!',showConfirmButton: false,timer: 3000});});</script>");
     }

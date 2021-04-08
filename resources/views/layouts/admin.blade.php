@@ -139,12 +139,25 @@ App\Http\Controllers\Invokable\Invoke::init();
 							@can('view transactions')
 							<li class="menu-title">Transactions</li>
 							<li>
-								<a href="/transactions" class="waves-effect"><i class="icon-graph"></i> <span> Transactions </span> </a>
+								<a href="javascript:void(0);" class="waves-effect"><i class="icon-graph"></i><span> Transactions <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+								<ul class="submenu">
+									<li><a href="/transactions">All Transactions</a></li>
+									<li><a href="/transactions/pending">Pending Transactions</a></li>
+									<li><a href="/transactions/failed">Failed Transactions</a></li>
+									<li><a href="/transactions/success">Successful Transactions</a></li>
+								</ul>
 							</li>
 							@endcan
 							@can('view investments')
 							<li>
-								<a href="/investments" class="waves-effect"><i class="icon-diamond"></i> <span> Investments </span> </a>
+								<a href="javascript:void(0);" class="waves-effect"><i class="icon-diamond"></i><span> Investments <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+								<ul class="submenu">
+									<li><a href="/investments">All Investments</a></li>
+									<li><a href="/investments/pending">Pending Investments</a></li>
+									<li><a href="/investments/active">Active Investments</a></li>
+									<li><a href="/investments/paid">Paid Investments</a></li>
+									<li><a href="/investments/declined">Declined Investments</a></li>
+								</ul>
 							</li>
 							@endcan
 							@can('view mandates')

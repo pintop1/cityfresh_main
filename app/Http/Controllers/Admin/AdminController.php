@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function __invoke()
     {
 
-    	$data['transactions'] = $this->getTransactions(true);
+    	$data['transactions'] = Transaction::where('details->status', 'success')->sum('details->amount');
     	$data['transaction_percent'] = $this->getTransactions();
     	$data['investments'] = $this->getInvestments();
     	$data['active_investment'] = $this->getInvestments(true);

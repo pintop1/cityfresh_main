@@ -53,7 +53,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     public function single($status)
     {
         $user = Auth::user();
-        $data['status'] = ucwords($status);
+        $data['status'] = $status == 'success' ? 'Successful': ucwords($status);
         if($user->is_admin){
             if($status == 'all') $data['entities'] = $this->model->latest()->get();
             else $data['entities'] = $this->model->where('details->status', $status)->latest()->get();

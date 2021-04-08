@@ -56,7 +56,7 @@ trait HasTeams
     /**
      * Get all of the teams the user owns or belongs to.
      *
-     * @return \Illuminate\Collections\Collection
+     * @return \Illuminate\Support\Collection
      */
     public function allTeams()
     {
@@ -104,7 +104,7 @@ trait HasTeams
      */
     public function ownsTeam($team)
     {
-        return $this->id == $team->user_id;
+        return $this->id == $team->{$this->getForeignKey()};
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Observers\Transaction;
 use App\Entities\Transaction\Mandate;
 use App\Entities\User\User;
 use App\Notifications\Transaction\MandateNotification;
+use App\Notifications\MandateNotification as Notifi;
 
 class MandateObserver
 {
@@ -30,6 +31,11 @@ class MandateObserver
         if($mandate->isDirty('user_id')){
             $user = User::find($mandate->user_id);
             $user->notify(new MandateNotification(explode(' ', $user->name)[0], false, $mandate));
+        }elseif($mandate->isDirty('amount')){
+            $user = User::find($mandate->user_id);
+            $old_amount = $wallet->getOriginal('amount'); 
+            $amount = $wallet->amount; 
+            $user->notify(new Notifi(explode(' ', $user->name)[0], $old_amount, $amount));
         }
     }
 

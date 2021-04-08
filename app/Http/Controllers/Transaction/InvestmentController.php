@@ -34,7 +34,7 @@ class InvestmentController extends Controller
     public function __construct(InvestmentInterface $interface, InvestmentRequest $request)
     {
         parent::__construct($interface, $request, new  InvestmentResource([]));
-        $this->middleware('can:view investments', ['only' => ['index', 'show']]);
+        $this->middleware('can:view investments', ['only' => ['index', 'show', 'single']]);
         $this->middleware('can:edit investments', ['only' => ['edit', 'update', 'changeStatus']]);
     }
 
@@ -116,5 +116,10 @@ class InvestmentController extends Controller
     public function changeStatus($id, $action)
     {
         return $this->interface->changeStatus($id, $action);
+    }
+
+    public function single($status = 'all')
+    {
+        return $this->interface->single($status);
     }
 }

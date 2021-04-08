@@ -62,9 +62,9 @@
 				</div>
 				<h3 class="mt-4">₦{{ number_format($active_investment,2) }}</h3>
 				<div class="progress mt-4" style="height: 4px;">
-					<div class="progress-bar bg-success" role="progressbar" style="width: {{$active_investment}}%" aria-valuenow="{{$active_investment}}" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar bg-success" role="progressbar" style="width: {{$active_investmentp}}%" aria-valuenow="{{$active_investmentp}}" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
-				<p class="text-muted mt-2 mb-0">Active investments<span class="float-right">{{round($active_investment)}}%</span></p>
+				<p class="text-muted mt-2 mb-0">Active investments<span class="float-right">{{round($active_investmentp)}}%</span></p>
 			</div>
 		</div></a>
 	</div>

@@ -51,6 +51,22 @@ class InvestmentRepository extends AbstractRepository implements InvestmentInter
         }
     }
 
+    public function single($status)
+    {
+        $user = Auth::user();
+        $data['status'] = ucwords($status);
+        if($user->is_admin){
+            if($status == 'all') $data['entities'] = $this->model->latest()->get();
+            else $data['entities'] = $this->model->where('status', $status)->latest()->get();
+            return view('investments.index', $data);
+        }else {
+            /*if($status == 'all') $data['entities'] = $user->transactions()->latest()->get();
+            else $data['entities'] = $user->transactions()->where('details->status', $status)->latest()->get();
+            return view('transactions.users.index', $data);*/
+        }
+        
+    }
+
     public function store()
     {
         $user = Auth::user();

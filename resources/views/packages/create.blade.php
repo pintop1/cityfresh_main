@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label>Description</label>
-                            <textarea class="form-control" name="description"></textarea>
+                            <textarea class="form-control" name="description" required></textarea>
                         </div>
                         </div>
                         <div class="col-12">

@@ -63,9 +63,9 @@ class UserRepository extends AbstractRepository implements UserInterface
         $user->update($data);
         if($user->profile_photo_path != null && $user->dob != null && $user->address != null && $user->banks()->count() > 0 && !$user->is_complete){
             $user->update(['is_complete'=>true]);
-            return redirect('/')->with('error_bottom', "<script>$(function(){swal({title: 'Great!',text: 'Your account registration is complete!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'})});</script>");
+            return redirect()->back()->with('error_bottom', "<script>$(function(){Swal.fire({title: 'Great!',text: 'Your account registration is complete!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'});});</script>");
         }
-        return redirect('/profile')->with('error_bottom', "<script>$(function(){swal({title: 'Great!',text: 'Your profile update was successful!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'})});</script>");
+        return redirect('/profile')->with('error_bottom', "<script>$(function(){Swal.fire({title: 'Great!',text: 'Your profile update was successful!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'});});</script>");
     }
 
     public function verify_referee($ref){
@@ -80,6 +80,6 @@ class UserRepository extends AbstractRepository implements UserInterface
         $user = $this->model->find($id);
         $user->is_active = !$user->is_active;
         $user->save();
-        return redirect()->back()->with('error_bottom', "<script>$(function(){swal({title: 'Great!',text: 'You have updated the user\'s status!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'})});</script>");
+        return redirect()->back()->with('error_bottom', "<script>$(function(){Swal.fire({title: 'Great!',text: 'You have updated the user\'s status!',type: 'success',showCancelButton: false,confirmButtonClass: 'btn btn-success',cancelButtonClass: 'btn btn-danger ml-2'})});</script>");
     }
 }

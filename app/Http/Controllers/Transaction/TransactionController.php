@@ -35,7 +35,7 @@ class TransactionController extends Controller
     public function __construct(TransactionInterface $interface, TransactionRequest $request)
     {
         parent::__construct($interface, $request, new  TransactionResource([]));
-        $this->middleware('can:view transactions', ['only' => ['index', 'show']]);
+        $this->middleware('can:view transactions', ['only' => ['index', 'show', 'single']]);
         $this->middleware('can:edit packages', ['only' => ['edit', 'update', 'changeStatus']]);
     }
 
