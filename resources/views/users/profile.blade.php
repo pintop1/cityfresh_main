@@ -134,11 +134,11 @@
                         <span class="d-none d-md-block">Profile</span><span class="d-block d-md-none"><i class="mdi mdi-account h5"></i></span> 
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#cards" role="tab">
                         <span class="d-none d-md-block">Cards</span><span class="d-block d-md-none"><i class="mdi mdi-credit-card-multiple h5"></i></span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#banks" role="tab">
                         <span class="d-none d-md-block">Banks</span><span class="d-block d-md-none"><i class="mdi mdi-bank h5"></i></span>
@@ -224,7 +224,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane p-3" id="banks" role="tabpanel">
+                    {{-- <div class="tab-pane p-3" id="banks" role="tabpanel">
                         <div class="row">
                             <div class="col-12">
                                 <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Add Bank</button>
@@ -280,7 +280,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -323,8 +323,6 @@
                 </div>
             </form>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
 @endsection
