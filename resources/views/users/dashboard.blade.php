@@ -128,7 +128,6 @@
 							@endif
 						</div>
 						<h5 class="font-size-15 text-truncate">{{ $user->name() }}</h5>
-						<p class="text-muted mb-0 text-truncate">{{ $user->id() }}</p>
 					</div>
 					<div class="col-sm-8">
 						<div class="pt-4">

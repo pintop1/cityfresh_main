@@ -180,7 +180,7 @@
                             </form>
                         </p>
                     </div>
-                    <div class="tab-pane p-3" id="cards" role="tabpanel">
+                    {{-- <div class="tab-pane p-3" id="cards" role="tabpanel">
                         <div class="row">
                             <div class="col-12">
                                 <a href="/card/add?from=-profile" class="btn btn-primary btn-lg mb-5 addCard">Add new card</a>
@@ -223,8 +223,8 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-                    {{-- <div class="tab-pane p-3" id="banks" role="tabpanel">
+                    </div> --}}
+                    <div class="tab-pane p-3" id="banks" role="tabpanel">
                         <div class="row">
                             <div class="col-12">
                                 <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Add Bank</button>
@@ -280,7 +280,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>
